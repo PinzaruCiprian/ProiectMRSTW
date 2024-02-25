@@ -10,6 +10,22 @@ namespace SemesterProject.App_Start
      {
           public static void RegisterBundles(BundleCollection bundles)
           {
+               bundles.Add(new StyleBundle("~/css").Include(
+                       "~/css/bootstrap.min.css",
+                       "~/css/bootstrap-theme.min.css",
+                       "~/css/fontAwesome.css",
+                       "~/css/light-box.css",
+                       "~/css/templatemo-style.css"));
+
+
+
+               bundles.Add(new ScriptBundle("~/js").Include(
+                       "~/js/plugins.js",
+                       "~/js/main.js"));
+
+               bundles.Add(new ScriptBundle("~/js/vendor").Include(
+                       "~/js/vendor/bootstrap.min.js",
+                       "~/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"));
           }
      }
 }
