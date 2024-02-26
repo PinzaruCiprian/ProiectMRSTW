@@ -1,1 +1,2 @@
 # ProiectMRSTW
+Primul meu commit!
