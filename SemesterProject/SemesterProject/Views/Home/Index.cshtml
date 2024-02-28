@@ -2,6 +2,7 @@
 @{
      ViewBag.Title = "Index";
 }
+@model List<SemesterProject.Classes.Items>
 
 <div id="video-container">
      <div class="video-overlay"></div>
@@ -25,167 +26,26 @@
 <div class="full-screen-portfolio" id="portfolio">
      <div class="container-fluid">
 
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Paris_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Paris, <em>France</em></h1>
-                                        <p>Known for the Eiffel Tower, the Louvre, and Montmartre, Paris is often called the "city of love" and is a top destination for those interested in art, history, and cuisine.</p>
+          @for (int i = 0; i < Model.Count; i++)
+          {
+               <div class="col-md-4 col-sm-6">
+                    <div class="portfolio-item">
+                         <a href="~/>@Model[i].Path_Wide" data-lightbox="image-1">
+                              <div class="thumb">
+                                   <div class="hover-effect">
+                                        <div class="hover-content">
+                                             <h1>@Model[i].Title, <em>@Model[i].Country</em></h1>
+                                             <p>@Model[i].Description</p>
+                                        </div>
+                                   </div>
+                                   <div class="image">
+                                        <img src="~/@Model[i].Path_Small">
                                    </div>
                               </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Paris_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
+                         </a>
+                    </div>
                </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Bali_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Bali, <em>Indonesia</em></h1>
-                                        <p> A popular destination for those seeking picturesque beaches, vibrant culture, and wellness and yoga retreats.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Bali_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Barcelona_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Barcelona, <em>Spain</em></h1>
-                                        <p>Famous for Gaudí's architecture, urban beaches, and lively nightlife.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Barcelona_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Islanda_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Iceland</h1>
-                                        <p>Known for its dramatic natural landscapes, including volcanoes, geysers, thermal baths, and the northern lights.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Islanda_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Kyoto_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Kyoto, <em>Japan</em></h1>
-                                        <p>Famous for its temples, zen gardens, and cherry blossom festival, Kyoto offers a window to traditional Japan.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Kyoto_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/MașuPicchu_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Machu Picchu, <em>Peru</em></h1>
-                                        <p>The ancient Incan ruins located on the Andes mountain ridges are a marvel for history and nature explorers.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/MașuPicchu_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/NewYork_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>New York, <em>USA</em></h1>
-                                        <p>The "city that never sleeps" is famous for Broadway, Times Square, and a multitude of world-class museums.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/NewYork_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Roma_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Rome, <em>Italy</em></h1>
-                                        <p>With its ancient ruins, the Vatican, and an unmatched culinary scene, Rome is a must-see for history enthusiasts and foodies.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Roma_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6">
-               <div class="portfolio-item">
-                    <a href="~/img/Locations/Sydney_Wide.jpg" data-lightbox="image-1">
-                         <div class="thumb">
-                              <div class="hover-effect">
-                                   <div class="hover-content">
-                                        <h1>Sydney, <em>Australia</em></h1>
-                                        <p>Known for the Opera House and Harbour Bridge, Sydney offers beautiful beaches and a vibrant city life.</p>
-                                   </div>
-                              </div>
-                              <div class="image">
-                                   <img src="~/img/locations/Sydney_Small.jpg">
-                              </div>
-                         </div>
-                    </a>
-               </div>
-          </div>
+          }
      </div>
 </div>
 
