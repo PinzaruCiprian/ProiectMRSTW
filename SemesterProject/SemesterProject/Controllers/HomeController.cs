@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SemesterProject.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,10 @@ namespace SemesterProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+               Items items = new Items();
+               items.clearList();
+               items.addItems();
+               return View(Items.items);
         }
     }
 }

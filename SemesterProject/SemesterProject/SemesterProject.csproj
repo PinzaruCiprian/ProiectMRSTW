@@ -175,18 +175,18 @@
     <Content Include="img\Locations\Bali_Wide.jpg" />
     <Content Include="img\Locations\Barcelona_Small.jpg" />
     <Content Include="img\Locations\Barcelona_Wide.jpg" />
-    <Content Include="img\Locations\Islanda_Small.jpg" />
-    <Content Include="img\Locations\Islanda_Wide.jpg" />
+    <Content Include="img\Locations\Iceland_Small.jpg" />
+    <Content Include="img\Locations\Iceland_Wide.jpg" />
     <Content Include="img\Locations\Kyoto_Small.jpg" />
     <Content Include="img\Locations\Kyoto_Wide.jpg" />
-    <Content Include="img\Locations\MașuPicchu_Small.jpg" />
-    <Content Include="img\Locations\MașuPicchu_Wide.jpg" />
+    <Content Include="img\Locations\MachuPicchu_Small.jpg" />
+    <Content Include="img\Locations\MachuPicchu_Wide.jpg" />
     <Content Include="img\Locations\NewYork_Small.jpg" />
     <Content Include="img\Locations\NewYork_Wide.jpg" />
     <Content Include="img\Locations\Paris_Small.jpg" />
     <Content Include="img\Locations\Paris_Wide.jpg" />
-    <Content Include="img\Locations\Roma_Small.jpg" />
-    <Content Include="img\Locations\Roma_Wide.jpg" />
+    <Content Include="img\Locations\Rome_Small.jpg" />
+    <Content Include="img\Locations\Rome_Wide.jpg" />
     <Content Include="img\Locations\Sydney_Small.jpg" />
     <Content Include="img\Locations\Sydney_Wide.jpg" />
     <Content Include="img\next.png" />
@@ -232,6 +232,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\Items.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
