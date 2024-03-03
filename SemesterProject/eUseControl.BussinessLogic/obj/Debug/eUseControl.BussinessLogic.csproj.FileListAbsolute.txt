@@ -1,0 +1,16 @@
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.BussinessLogic.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.BussinessLogic.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\obj\Debug\eUseControl.BussinessLogic.csproj.AssemblyReference.cache
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\obj\Debug\eUseControl.BussinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\obj\Debug\eUseControl.BussinessLogic.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\obj\Debug\eUseControl.BussinessLogic.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.Domain.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.Helpers.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.Domain.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.Helpers.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\obj\Debug\eUseControl.BussinessLogic.csproj.CopyComplete
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.BussinessLogic.dll.config
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\EntityFramework.SqlServer.xml
