@@ -12,10 +12,7 @@ namespace SemesterProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-               Items items = new Items();
-               items.clearList();
-               items.addItems();
-               return View(Items.items);
+               return View();
         }
     }
 }

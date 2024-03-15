@@ -1,25 +1,26 @@
 ﻿@using System.Web.Optimization;
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-     <meta charset="utf-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-     <title>BlueSky Bookings</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
-     <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+     <meta charset="utf-8" />
+     <title>Minton - Responsive Admin Dashboard Template</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="~/assets/images/favicon.ico">
 
-     @Styles.Render("~/css")
-     @Scripts.Render("~/js/vendor")
+     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+     <link href="~/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
-     @Html.Partial("_Header")
-     @Html.Partial("_Navigation")
+     <header id="topnav">
+          @Html.Partial("_Header")
+          @Html.Partial("_Navigation")
+     </header>
      @RenderBody()
      @Html.Partial("_Footer")
 
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-     @Scripts.Render("~/js")
+     <script src="~/assets/js/vendor.min.js"></script>
 </body>
+</html>
