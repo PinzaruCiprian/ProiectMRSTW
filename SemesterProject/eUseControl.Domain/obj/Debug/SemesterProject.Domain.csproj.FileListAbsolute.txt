@@ -1,0 +1,9 @@
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\bin\Debug\eUseControl.Domain.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\bin\Debug\eUseControl.Domain.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\bin\Debug\eUseControl.Helpers.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\bin\Debug\eUseControl.Helpers.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\obj\Debug\SemesterProject.Domain.csproj.AssemblyReference.cache
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\obj\Debug\SemesterProject.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\obj\Debug\SemesterProject.Domain.csproj.CopyComplete
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\obj\Debug\eUseControl.Domain.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Domain\obj\Debug\eUseControl.Domain.pdb

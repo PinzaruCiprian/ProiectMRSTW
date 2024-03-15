@@ -127,3 +127,8 @@ C:\Users\User\Desktop\Proiect de an\ProiectMRSTW\SemesterProject\SemesterProject
 C:\Users\User\Desktop\Proiect de an\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.BussinessLogic.dll.config
 C:\Users\User\Desktop\Proiect de an\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Domain.pdb
 C:\Users\User\Desktop\Proiect de an\ProiectMRSTW\SemesterProject\SemesterProject\bin\EntityFramework.xml
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.BussinessLogic.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Domain.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.BussinessLogic.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.BussinessLogic.dll.config
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Domain.pdb
