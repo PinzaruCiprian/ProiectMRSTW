@@ -1,4 +1,5 @@
-﻿using SemesterProject.App_Start;
+﻿using AutoMapper;
+using SemesterProject.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,6 @@ namespace SemesterProject
            AreaRegistration.RegisterAllAreas();
            RouteConfig.RegisterRoutes(RouteTable.Routes);
            BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
+          }
     }
 }
