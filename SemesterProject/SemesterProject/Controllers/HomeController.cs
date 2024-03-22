@@ -1,21 +1,17 @@
-﻿using SemesterProject.Classes;
-using System;
+﻿using SemesterProject.Extension;
+using SemesterProject.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SemesterProject.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         public ActionResult Index()
         {
-               Items items = new Items();
-               items.clearList();
-               items.addItems();
-               return View(Items.items);
+            //SessionStatus();
+            return View();
         }
-    }
+     }
 }

@@ -1,0 +1,6 @@
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Helpers\bin\Debug\eUseControl.Helpers.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Helpers\bin\Debug\eUseControl.Helpers.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Helpers\obj\Debug\eUseControl.Helpers.csproj.AssemblyReference.cache
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Helpers\obj\Debug\eUseControl.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Helpers\obj\Debug\eUseControl.Helpers.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.Helpers\obj\Debug\eUseControl.Helpers.pdb
