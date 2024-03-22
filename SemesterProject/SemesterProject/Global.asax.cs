@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using eUseControl.Domain.Entities.User;
 using SemesterProject.App_Start;
+using SemesterProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,12 @@ namespace SemesterProject
            AreaRegistration.RegisterAllAreas();
            RouteConfig.RegisterRoutes(RouteTable.Routes);
            BundleConfig.RegisterBundles(BundleTable.Bundles);
+           InitializeAutoMapper();
+        }
+
+          protected static void InitializeAutoMapper()
+          {
+               Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
           }
-    }
+     }
 }

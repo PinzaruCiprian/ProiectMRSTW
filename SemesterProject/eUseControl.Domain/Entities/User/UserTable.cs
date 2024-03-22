@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace eUseControl.Domain.Entities.User
 {
-     public class UDbTable
+     public class UserTable
      {
           [Key]
           [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -34,7 +34,7 @@ namespace eUseControl.Domain.Entities.User
           public DateTime LastLogin { get; set; }
 
           [StringLength(30)]
-          public string LasIp { get; set; }
+          public string LastIp { get; set; }
 
           public URole Level { get; set; }
      }

@@ -24,11 +24,10 @@ namespace SemesterProject.Controllers
 
           [HttpPost]
           [ValidateAntiForgeryToken]
-          public ActionResult Index(UserLogin login)
+          public ActionResult LogIn(UserLogin login)
           {
                if (ModelState.IsValid)
                {
-                    Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
                     var data = Mapper.Map<ULoginData>(login);
 
                     data.LoginIp = Request.UserHostAddress;
@@ -37,7 +36,7 @@ namespace SemesterProject.Controllers
                     var userLogin = _session.UserLogin(data);
                     if (userLogin.Status)
                     {
-                         HttpCookie cookie = _session.GenCookie(login.Credential);
+                         HttpCookie cookie = _session.GenCookie(login.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                          return RedirectToAction("Index", "Home");

@@ -16,3 +16,5 @@ C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eU
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\obj\Debug\eUseControl.BussinessLogic.pdb
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\AutoMapper.dll
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\AutoMapper.xml
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.Domain.dll.config
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\eUseControl.BussinessLogic\bin\Debug\eUseControl.Helpers.dll.config

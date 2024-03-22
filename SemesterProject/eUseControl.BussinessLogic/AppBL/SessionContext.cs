@@ -10,7 +10,7 @@ namespace eUseControl.BussinessLogic.AppBL
 {
      public class SessionContext : DbContext
      {
-          public SessionContext() : base("name=CCToolShop")
+          public SessionContext() : base("name=SemesterProject")
           {
           }
           public virtual DbSet<Session> Sessions { get; set; }

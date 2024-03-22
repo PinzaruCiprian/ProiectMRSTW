@@ -15,6 +15,6 @@ namespace eUseControl.BussinessLogic.AppBL
           {
           }
 
-          public virtual DbSet<UDbTable> Users { get; set; }
+          public virtual DbSet<UserTable> Users { get; set; }
      }
 }

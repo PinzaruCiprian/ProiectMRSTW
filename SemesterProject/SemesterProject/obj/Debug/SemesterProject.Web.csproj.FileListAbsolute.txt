@@ -66,7 +66,11 @@ C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\Se
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\obj\Debug\SemesterProject.pdb
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\AutoMapper.dll
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\EntityFramework.dll
-C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Helpers.dll
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\AutoMapper.xml
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\EntityFramework.xml
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\EntityFramework.SqlServer.dll
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Domain.dll.config
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\EntityFramework.SqlServer.xml
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Helpers.dll
 C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Helpers.pdb
+C:\Users\pinza\Desktop\Anul 2\Semestrul IV\MRSTW\ProiectMRSTW\SemesterProject\SemesterProject\bin\eUseControl.Helpers.dll.config

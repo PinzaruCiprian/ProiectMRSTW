@@ -14,14 +14,14 @@ namespace eUseControl.BussinessLogic.Core
      {
           internal ULoginResp UserLoginAction(ULoginData data)
           {
-               UDbTable result;
+               UserTable result;
                var validate = new EmailAddressAttribute();
-               if (validate.IsValid(data.Credential))
+               if (validate.IsValid(data.Email))
                {
-                    var pass = LoginHelper.HashGen(data.Password);
+                    //var pass = LoginHelper.HashGen(data.Password);
                     using (var db = new UserContext())
                     {
-                         result = db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass);
+                         result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == data.Password);
                     }
 
                     if (result == null)
@@ -31,37 +31,15 @@ namespace eUseControl.BussinessLogic.Core
 
                     using (var todo = new UserContext())
                     {
-                         result.LasIp = data.LoginIp;
+                         result.LastIp = data.LoginIp;
                          result.LastLogin = data.LoginDateTime;
-                         todo.Entry(result).State = EntityState.Modified;
+                         //todo.Entry(result).State = EntityState.Modified;
                          todo.SaveChanges();
                     }
-
                     return new ULoginResp { Status = true };
                }
                else
-               {
-                    var pass = LoginHelper.HashGen(data.Password);
-                    using (var db = new UserContext())
-                    {
-                         result = db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == pass);
-                    }
-
-                    if (result == null)
-                    {
-                         return new ULoginResp { Status = false, StatusMsg = "The Username or Password is Incorrect" };
-                    }
-
-                    using (var todo = new UserContext())
-                    {
-                         result.LasIp = data.LoginIp;
-                         result.LastLogin = data.LoginDateTime;
-                         todo.Entry(result).State = EntityState.Modified;
-                         todo.SaveChanges();
-                    }
-
-                    return new ULoginResp { Status = true };
-               }
+                    return new ULoginResp { Status = false };
           }
 
           internal HttpCookie Cookie(string loginCredential)
@@ -112,7 +90,7 @@ namespace eUseControl.BussinessLogic.Core
           internal UserMinimal UserCookie(string cookie)
           {
                Session session;
-               UDbTable curentUser;
+               UserTable curentUser;
 
                using (var db = new SessionContext())
                {
@@ -134,7 +112,7 @@ namespace eUseControl.BussinessLogic.Core
                }
 
                if (curentUser == null) return null;
-               Mapper.Initialize(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
+               Mapper.Initialize(cfg => cfg.CreateMap<UserTable, UserMinimal>());
                var userminimal = Mapper.Map<UserMinimal>(curentUser);
 
                return userminimal;
