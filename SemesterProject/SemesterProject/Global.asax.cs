@@ -27,7 +27,11 @@ namespace SemesterProject
 
           protected static void InitializeAutoMapper()
           {
-               Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
+               Mapper.Initialize(cfg =>
+               {
+                    cfg.CreateMap<UserLogin, ULoginData>();
+                    cfg.CreateMap<UserRegister, URegisterData>();
+               });
           }
      }
 }

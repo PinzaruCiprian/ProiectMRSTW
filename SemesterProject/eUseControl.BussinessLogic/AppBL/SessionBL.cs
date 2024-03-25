@@ -11,6 +11,11 @@ namespace eUseControl.BussinessLogic
           {
                return UserLoginAction(data);
           }
+          
+          public URegisterResp UserRegister(URegisterData data)
+          {
+               return UserRegisterAction(data);
+          }
 
           public HttpCookie GenCookie(string loginCredential)
           {

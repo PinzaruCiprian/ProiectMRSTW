@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\User\Session.cs" />
+    <Compile Include="Entities\User\URegisterData.cs" />
+    <Compile Include="Entities\User\URegisterResp.cs" />
     <Compile Include="Entities\User\UserTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
     <Compile Include="Entities\User\ULoginResp.cs" />

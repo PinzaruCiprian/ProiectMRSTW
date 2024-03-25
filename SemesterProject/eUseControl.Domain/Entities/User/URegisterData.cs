@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SemesterProject.Model
+namespace eUseControl.Domain.Entities.User
 {
-     public class UserRegister
+     public class URegisterData
      {
           public string Credential { get; set; }
-
           public string Email { get; set; }
-
           public string Password { get; set; }
+          public string LoginIp { get; set; }
+          public DateTime LoginDateTime { get; set; }
+
      }
 }
