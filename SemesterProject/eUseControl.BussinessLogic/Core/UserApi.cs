@@ -19,10 +19,10 @@ namespace eUseControl.BussinessLogic.Core
                var validate = new EmailAddressAttribute();
                if (validate.IsValid(data.Email))
                {
-                    //var pass = LoginHelper.HashGen(data.Password);
+                    var pass = LoginHelper.HashGen(data.Password);
                     using (var db = new UserContext())
                     {
-                         result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == data.Password);
+                         result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == pass);
                     }
 
                     if (result == null)
@@ -34,7 +34,6 @@ namespace eUseControl.BussinessLogic.Core
                     {
                          result.LastIp = data.LoginIp;
                          result.LastLogin = data.LoginDateTime;
-                         //todo.Entry(result).State = EntityState.Modified;
                          todo.SaveChanges();
                     }
                     return new ULoginResp { Status = true };
@@ -49,7 +48,6 @@ namespace eUseControl.BussinessLogic.Core
                var validate = new EmailAddressAttribute();
                if (validate.IsValid(data.Email))
                {
-                    //var pass = LoginHelper.HashGen(data.Password);
                     using (var db = new UserContext())
                     {
                          existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email);
@@ -57,14 +55,15 @@ namespace eUseControl.BussinessLogic.Core
                    
                     if (existingUser != null)
                     {
-                         return new URegisterResp { Status = false, StatusMsg = "User Already Exists" };
+                         return new URegisterResp { Status = false, StatusMsg = "User With Email Already Exists" };
                     }
 
+                    var pass = LoginHelper.HashGen(data.Password);
                     var newUser = new UserTable
                     {
                          Email = data.Email,
                          Username = data.Username,
-                         Password = data.Password,
+                         Password = pass,
                          LastIp = data.LoginIp,
                          LastLogin = data.LoginDateTime,
                          Level = (URole)0,
@@ -74,7 +73,6 @@ namespace eUseControl.BussinessLogic.Core
                     {
                          todo.Users.Add(newUser);
                          todo.SaveChanges();
-                 
                     }
                     return new URegisterResp { Status = true };
                }

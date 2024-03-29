@@ -7,7 +7,7 @@
      var submitButton = document.getElementById('submit-button');
 
      // Inițial presupunem că totul este în regulă și activăm butonul
-     var valid = true;
+     var valid = false;
      var policyRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
      errorMessageLength.style.display = 'none';
@@ -21,7 +21,6 @@
      }
      else
      {
-          errorMessageMatch.style.display = 'none';
           if (parola1.length < 8 || parola2.length < 8)
           {
                errorMessageLength.style.display = 'block';
@@ -29,13 +28,12 @@
           }
           else
           {
-               errorMessageLength.style.display = 'none';
                if (!policyRegex.test(parola1) || !policyRegex.test(parola2)) {
                     errorMessagePolicy.style.display = 'block';
                     valid = false;
                }
                else {
-                    errorMessagePolicy.style.display = 'none';
+                    valid = true;
                }
           }
      }
