@@ -9,6 +9,7 @@
      <div class="container">
           <div class="row justify-content-center">
                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <a href="~/Views/Login/Login.cshtml">~/Views/Login/Login.cshtml</a>
                     <div class="card">
 
                          <div class="card-body p-4">
@@ -26,7 +27,7 @@
                                    <form action="/" novalidate id="LoginForm" method="post">
 
                                         <div class="form-group mb-3">
-                                             @Html.LabelFor(m => m.Email, new { @class = "emailadress"})
+                                             @Html.LabelFor(m => m.Email, new { @class = "emailadress" })
                                              @Html.TextBoxFor(m => m.Email, new
                                         {
                                              placeholder = "example@gmail.com",

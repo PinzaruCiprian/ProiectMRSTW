@@ -54,21 +54,20 @@ namespace eUseControl.BussinessLogic.Core
                     {
                          existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email);
                     }
-
                    
                     if (existingUser != null)
                     {
                          return new URegisterResp { Status = false, StatusMsg = "User Already Exists" };
                     }
+
                     var newUser = new UserTable
                     {
                          Email = data.Email,
-                         Username = data.Credential,
+                         Username = data.Username,
                          Password = data.Password,
                          LastIp = data.LoginIp,
                          LastLogin = data.LoginDateTime,
                          Level = (URole)0,
-                         Id = 2
                     };
 
                     using (var todo = new UserContext())

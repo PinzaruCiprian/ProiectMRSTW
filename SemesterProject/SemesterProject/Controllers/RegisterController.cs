@@ -22,9 +22,10 @@ namespace SemesterProject.Controllers
           }
           // GET: Register
           public ActionResult Register()
-        {
+          {
             return View();
-        }
+          }
+
           [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult Register(UserRegister register)
@@ -36,19 +37,17 @@ namespace SemesterProject.Controllers
                     data.LoginIp = Request.UserHostAddress;
                     data.LoginDateTime = DateTime.Now;
 
-                    var userLogin = _session.UserRegister(data);
-                    if (userLogin.Status)
+                    var userRegister = _session.UserRegister(data);
+                    if (userRegister.Status)
                     {
                          HttpCookie cookie = _session.GenCookie(register.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-
-
 
                          return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                         ModelState.AddModelError("", userLogin.StatusMsg);
+                         ModelState.AddModelError("", userRegister.StatusMsg);
                          return View();
                     }
                }
