@@ -38,8 +38,6 @@ namespace SemesterProject.Controllers
                     {
                          HttpCookie cookie = _session.GenCookie(login.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                       
-
 
                          return RedirectToAction("Index", "Home");
                     }

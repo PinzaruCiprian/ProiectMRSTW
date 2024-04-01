@@ -216,6 +216,7 @@
     <Content Include="assets\images\users\avatar-8.jpg" />
     <Content Include="assets\images\users\avatar-9.jpg" />
     <Content Include="assets\js\app.min.js" />
+    <Content Include="assets\js\main.js" />
     <Content Include="assets\js\vendor.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -298,7 +299,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Model\UserData.cs" />
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Model\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
