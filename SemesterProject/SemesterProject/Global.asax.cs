@@ -31,6 +31,7 @@ namespace SemesterProject
                {
                     cfg.CreateMap<UserLogin, ULoginData>();
                     cfg.CreateMap<UserRegister, URegisterData>();
+                    cfg.CreateMap<UserTable, UserMinimal>();
                });
           }
      }

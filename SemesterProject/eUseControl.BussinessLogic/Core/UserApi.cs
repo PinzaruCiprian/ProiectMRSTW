@@ -34,6 +34,7 @@ namespace eUseControl.BussinessLogic.Core
                     {
                          result.LastIp = data.LoginIp;
                          result.LastLogin = data.LoginDateTime;
+                         todo.Entry(result).State = EntityState.Modified;
                          todo.SaveChanges();
                     }
                     return new ULoginResp { Status = true };
@@ -103,7 +104,7 @@ namespace eUseControl.BussinessLogic.Core
                     if (curent != null)
                     {
                          curent.CookieString = apiCookie.Value;
-                         curent.ExpireTime = DateTime.Now.AddMinutes(60);
+                         curent.ExpireTime = DateTime.Now.AddMinutes(1);
                          using (var todo = new SessionContext())
                          {
                               todo.Entry(curent).State = EntityState.Modified;
@@ -116,12 +117,11 @@ namespace eUseControl.BussinessLogic.Core
                          {
                               Username = loginCredential,
                               CookieString = apiCookie.Value,
-                              ExpireTime = DateTime.Now.AddMinutes(60)
+                              ExpireTime = DateTime.Now.AddMinutes(1)
                          });
                          db.SaveChanges();
                     }
                }
-
                return apiCookie;
           }
 
@@ -150,7 +150,6 @@ namespace eUseControl.BussinessLogic.Core
                }
 
                if (curentUser == null) return null;
-               Mapper.Initialize(cfg => cfg.CreateMap<UserTable, UserMinimal>());
                var userminimal = Mapper.Map<UserMinimal>(curentUser);
 
                return userminimal;
