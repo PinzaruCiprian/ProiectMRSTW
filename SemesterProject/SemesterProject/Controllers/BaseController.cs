@@ -39,7 +39,6 @@ namespace SemesterProject.Controllers
                                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                               }
                          }
-
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
                     }
                }
