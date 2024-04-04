@@ -24,5 +24,5 @@ namespace SemesterProject.Controllers
             };
             return View(u);
         }
-     }
+    }
 }
