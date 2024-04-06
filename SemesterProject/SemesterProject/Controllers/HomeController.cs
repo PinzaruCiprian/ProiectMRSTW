@@ -16,13 +16,8 @@ namespace SemesterProject.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            var user = System.Web.HttpContext.Current.GetMySessionObject();
-            UserData u = new UserData
-            {
-                Username = user.Username,
-                Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" }
-            };
-            return View(u);
+
+            return View();
         }
     }
 }

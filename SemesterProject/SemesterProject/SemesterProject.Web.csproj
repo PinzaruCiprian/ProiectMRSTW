@@ -256,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserResetPassword.cs" />
     <Compile Include="Model\UserData.cs" />
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Model\UserRegister.cs" />
@@ -328,6 +329,7 @@
     <Content Include="Views\Shared\_LayoutSimple.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\AddSomething\AddSomething.cshtml" />
+    <Content Include="Views\Login\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -22,6 +22,12 @@ namespace SemesterProject.Controllers
                return View();
           }
 
+          public ActionResult ResetPassword()
+          {
+               return View();
+          }
+
+
           [HttpPost]
           [ValidateAntiForgeryToken]
           public ActionResult LogIn(UserLogin login)
@@ -37,6 +43,35 @@ namespace SemesterProject.Controllers
                     if (userLogin.Status)
                     {
                          HttpCookie cookie = _session.GenCookie(login.Email);
+                         ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+                         return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                         ModelState.AddModelError("", userLogin.StatusMsg);
+                         return View();
+                    }
+               }
+               return View();
+          }
+
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult ResetPassword(UserResetPassword reset)
+          {
+               if (ModelState.IsValid)
+               {
+                    var data = Mapper.Map<ULoginData>(reset);
+
+                    data.Email = "user@gmail.com"; //emailul din fereastr care introduce datele pentru reset
+                    data.LoginIp = Request.UserHostAddress;
+                    data.LoginDateTime = DateTime.Now;
+
+                    var userLogin = _session.UserLogin(data);
+                    if (userLogin.Status)
+                    {
+                         HttpCookie cookie = _session.GenCookie(data.Email);
                          ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                          return RedirectToAction("Index", "Home");
