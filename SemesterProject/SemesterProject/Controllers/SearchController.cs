@@ -7,16 +7,15 @@ using System.Web.Mvc;
 
 namespace SemesterProject.Controllers
 {
-    public class SearchController : Controller
+    public class SearchController : BaseController
     {
         // GET: Search
         public ActionResult SearchPage()
         {
-               using (var db = new UserContext())
-               {
-                    ViewBag.tickets = 8;
-               }
-                    return View();
+               SessionStatus();
+               string userStatus = (string)System.Web.HttpContext.Current.Session["LoginStatus"];
+               ViewBag.tickets = 8;
+               return View();
         }
-    }
+     }
 }
