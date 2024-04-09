@@ -174,6 +174,7 @@
     <Content Include="assets\images\logo-light.png" />
     <Content Include="assets\images\megamenu-bg.png" />
     <Content Include="assets\images\users\avatar-1.jpg" />
+    <Content Include="assets\images\users\guest.jpg" />
     <Content Include="assets\js\app.min.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\vendor.min.js" />
@@ -251,7 +252,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Atributes\AdminModeAttribute.cs" />
-    <Compile Include="Controllers\AddSomethingController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -332,7 +332,6 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutSimple.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\AddSomething\AddSomething.cshtml" />
     <Content Include="Views\Search\SearchPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
