@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using SemesterProject.Model;
+using eUseControl.BussinessLogic.AppBL;
+using eUseControl.Domain.Entities.User;
+using System.Linq;
 
 namespace SemesterProject.Controllers
 {
@@ -11,18 +14,18 @@ namespace SemesterProject.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-            {
-                return RedirectToAction("Login", "Login");
-            }
+               string userStatus = (string)System.Web.HttpContext.Current.Session["LoginStatus"];
+               string email = (string)System.Web.HttpContext.Current.Session["Email"];
+               UserTable user;
+               using (var db = new UserContext())
+               {
+                    user = db.Users.FirstOrDefault(u => u.Email == email);
+                    ViewBag.userStatus = userStatus;
+                    ViewBag.user = user;
+               }
 
-            var user = System.Web.HttpContext.Current.GetMySessionObject();
-            UserData u = new UserData
-            {
-                Username = user.Username,
-                Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" }
-            };
-            return View(u);
+
+               return View();
         }
     }
 }
