@@ -23,8 +23,6 @@ namespace SemesterProject.Controllers
                     ViewBag.userStatus = userStatus;
                     ViewBag.user = user;
                }
-
-
                return View();
         }
     }

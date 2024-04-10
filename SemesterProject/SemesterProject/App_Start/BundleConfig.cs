@@ -11,14 +11,14 @@ namespace SemesterProject.App_Start
           public static void RegisterBundles(BundleCollection bundles)
           {
                bundles.Add(new StyleBundle("~/assets/css").Include(
-                       "~/assets/css/bootstrap.min.css",
-                       "~/assets/css/icons.min.css",
+                       "~/assets/css/bootstrap.css",
+                       "~/assets/css/icons.css",
                        "~/assets/css/main.css",
-                       "~/assets/css/app.min.css"));
+                       "~/assets/css/app.css"));
 
                bundles.Add(new ScriptBundle("~/assets/js").Include(
-                      "~/assets/js/vendor.min.js",
-                      "~/assets/js/app.min.js",
+                      "~/assets/js/vendor.js",
+                      "~/assets/js/app.js",
                       "~/assets/js/main.js"));
           }
      }

@@ -1,4 +1,5 @@
 ﻿using eUseControl.BussinessLogic.AppBL;
+using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,15 @@ namespace SemesterProject.Controllers
         {
                SessionStatus();
                string userStatus = (string)System.Web.HttpContext.Current.Session["LoginStatus"];
-               ViewBag.tickets = 8;
+               string email = (string)System.Web.HttpContext.Current.Session["Email"];
+               UserTable user;
+               using (var db = new UserContext())
+               {
+                    user = db.Users.FirstOrDefault(u => u.Email == email);
+                    ViewBag.userStatus = userStatus;
+                    ViewBag.tickets = 8;
+                    ViewBag.user = user;
+               }
                return View();
         }
      }

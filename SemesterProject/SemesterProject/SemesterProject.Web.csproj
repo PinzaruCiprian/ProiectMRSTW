@@ -114,10 +114,10 @@
     <Content Include="App_Data\SemesterProject_log.ldf">
       <DependentUpon>SemesterProject.mdf</DependentUpon>
     </Content>
+    <Content Include="assets\css\app.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\icons.css" />
     <Content Include="assets\css\main.css" />
-    <Content Include="assets\css\app.min.css" />
-    <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\icons.min.css" />
     <Content Include="assets\fonts\dropify.svg" />
     <Content Include="assets\fonts\fa-brands-400.svg" />
     <Content Include="assets\fonts\fa-regular-400.svg" />
@@ -175,9 +175,9 @@
     <Content Include="assets\images\megamenu-bg.png" />
     <Content Include="assets\images\users\avatar-1.jpg" />
     <Content Include="assets\images\users\guest.jpg" />
-    <Content Include="assets\js\app.min.js" />
+    <Content Include="assets\js\app.js" />
     <Content Include="assets\js\main.js" />
-    <Content Include="assets\js\vendor.min.js" />
+    <Content Include="assets\js\vendor.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />

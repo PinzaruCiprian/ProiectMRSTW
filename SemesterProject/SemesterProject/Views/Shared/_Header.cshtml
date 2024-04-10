@@ -8,8 +8,7 @@
 <div class="navbar-custom">
      <div class="container-fluid">
           <ul class="list-unstyled topnav-menu float-right mb-0">
-
-               @*<li class="d-none d-sm-block">
+               <li class="d-none d-sm-block">
                          <form class="app-search">
                               <div class="app-search-box">
                                    <div class="input-group">
@@ -22,7 +21,7 @@
                                    </div>
                               </div>
                          </form>
-                    </li>*@
+                    </li>
                @if (userStatus == "login")
                {
                     <li class="dropdown notification-list">
@@ -76,13 +75,18 @@
                                    <i class="remixicon-account-circle-line"></i>
                                    <span>Log In</span>
                               </a>
+
+                              <a href="/Register/Register" class="dropdown-item notify-item">
+                                   <i class="remixicon-account-circle-line"></i>
+                                   <span>Sign Up</span>
+                              </a>
                          </div>
                     </li>
                }
           </ul>
 
           <div class="logo-box">
-               <a href="#" class="logo text-center">
+               <a href="/Home/Index" class="logo text-center">
                     <span class="logo-lg">
                          <img src="~/assets/images/logo-light.png" alt="" height="20">
                     </span>
