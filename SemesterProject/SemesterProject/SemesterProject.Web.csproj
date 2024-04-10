@@ -110,6 +110,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SemesterProject.mdf" />
+    <Content Include="App_Data\SemesterProject_log.ldf">
+      <DependentUpon>SemesterProject.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\css\main.css" />
     <Content Include="assets\css\app.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
@@ -170,6 +174,7 @@
     <Content Include="assets\images\logo-light.png" />
     <Content Include="assets\images\megamenu-bg.png" />
     <Content Include="assets\images\users\avatar-1.jpg" />
+    <Content Include="assets\images\users\guest.jpg" />
     <Content Include="assets\js\app.min.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\vendor.min.js" />
@@ -247,11 +252,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Atributes\AdminModeAttribute.cs" />
-    <Compile Include="Controllers\AddSomethingController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -327,7 +332,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutSimple.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\AddSomething\AddSomething.cshtml" />
+    <Content Include="Views\Search\SearchPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -335,9 +340,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\eUseControl.BussinessLogic\SemesterProject.BussinessLogic.csproj">
       <Project>{f9b14214-3408-419a-9968-af2580290f7a}</Project>
