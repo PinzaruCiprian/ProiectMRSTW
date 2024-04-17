@@ -36,7 +36,7 @@
                                    <h6 class="text-overflow m-0">Welcome @user.Username!</h6>
                               </div>
 
-                              <a href="#" class="dropdown-item notify-item">
+                              <a href="/Home/UserProfile" class="dropdown-item notify-item">
                                    <i class="remixicon-account-circle-line"></i>
                                    <span>Profile</span>
                               </a>
@@ -93,9 +93,7 @@
                </a>
           </div>
 
-          @if (user != null)
-          {
-               if ((int)user.Level == 2)
+         @if (user != null && (int)user.Level==2)
                {
                     <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
                          <li class="dropdown d-none d-lg-block">
@@ -126,7 +124,6 @@
                               </div>
                          </li>
                     </ul>
-               }
           }
      </div>
 </div>

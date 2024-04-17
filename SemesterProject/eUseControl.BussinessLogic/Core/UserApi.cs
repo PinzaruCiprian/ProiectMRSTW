@@ -83,6 +83,7 @@ namespace eUseControl.BussinessLogic.Core
 
           internal HttpCookie Cookie(string loginCredential)
           {
+               int sessionTime = 60;
                var apiCookie = new HttpCookie("X-KEY")
                {
                     Value = CookieGenerator.Create(loginCredential)
@@ -104,7 +105,7 @@ namespace eUseControl.BussinessLogic.Core
                     if (curent != null)
                     {
                          curent.CookieString = apiCookie.Value;
-                         curent.ExpireTime = DateTime.Now.AddMinutes(1);
+                         curent.ExpireTime = DateTime.Now.AddMinutes(sessionTime);
                          using (var todo = new SessionContext())
                          {
                               todo.Entry(curent).State = EntityState.Modified;
@@ -117,7 +118,7 @@ namespace eUseControl.BussinessLogic.Core
                          {
                               Username = loginCredential,
                               CookieString = apiCookie.Value,
-                              ExpireTime = DateTime.Now.AddMinutes(1)
+                              ExpireTime = DateTime.Now.AddMinutes(sessionTime)
                          });
                          db.SaveChanges();
                     }

@@ -256,12 +256,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Model\UserData.cs" />
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Model\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -332,7 +330,8 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutSimple.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\Search\SearchPage.cshtml" />
+    <Content Include="Views\Home\SearchPage.cshtml" />
+    <Content Include="Views\Home\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
