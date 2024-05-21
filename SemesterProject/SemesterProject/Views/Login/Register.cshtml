@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
      Layout = "~/Views/Shared/_LayoutSimple.cshtml";
      ViewBag.Title = "Register";
 }
@@ -15,13 +14,13 @@
                          <div class="card-body p-4">
 
                               <div class="text-center w-75 m-auto">
-                                   <a href="index.html">
+                                   <a href="/Home/Index">
                                         <span><img src="~/assets/images/logo-dark.png" alt="" height="22"></span>
                                    </a>
                                    <p class="text-muted mb-4 mt-3">Don't have an account? Create your own account, it takes less than a minute</p>
                               </div>
                               @Html.ValidationSummary(true)
-                              @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @id = "RegisterForm" }))
+                              @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @id = "RegisterForm" }))
                               {
                                    @Html.AntiForgeryToken()
                                    <form action="/" novalidate id="RegisterForm" method="post">
@@ -69,6 +68,7 @@
                                         })
                                         </div>
                                         <div class="form-group">
+
                                              <label for="password">Repeat Password</label>
                                              <input class="form-control" type="password" required id="repeat-password" placeholder="Repeat your Password" onblur="verificaParole()">
                                              <div id="error-message-match" class="error-message" style="display:none; color: red;">The passwords do not match!</div>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="row mt-3">
                          <div class="col-12 text-center">
-                              <p class="text-muted">Already have account?  <a href="/Login/Login" class="text-muted font-weight-medium ml-1">Sign In</a></p>
+                              <p class="text-muted">Already have account?<a href="/Login/Login" class="text-primary font-weight-medium ml-1">Sign In</a></p>
                          </div>
                     </div>
                </div>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eUseControl.BussinessLogic.AppBL;
+using eUseControl.Domain.Entities.Admin;
 using eUseControl.Domain.Entities.User;
 using eUseControl.Domain.Enums;
 using eUseControl.Helpers;
@@ -13,74 +14,120 @@ namespace eUseControl.BussinessLogic.Core
 {
      public class UserApi
      {
-          internal ULoginResp UserLoginAction(ULoginData data)
+          internal bool RecoverPasswordAction(string email, string password)
           {
-               UserTable result;
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(email))
+               {
+                    using (var db = new TableContext())
+                    {
+                         UserTable user = db.Users.FirstOrDefault(u => u.Email == email);
+                         var pass = LoginHelper.HashGen(password);
+                         user.Password = pass;
+                         db.SaveChanges();
+                    }
+                    return true;
+               }
+               else
+                    return false;
+          }
+          internal void RemoveUnusedSessionsAction(UserMinimal user)
+          {
+               using (var db = new TableContext())
+               {
+                    var expiredSessions = db.Sessions.Where(s => s.ExpireTime < DateTime.Now).ToList();
+
+                    var sessionToDelete = db.Sessions.FirstOrDefault(s => s.Username == user.Email);
+                    db.Sessions.Remove(sessionToDelete);
+                    if (expiredSessions.Any())
+                    {
+                         foreach (var session in expiredSessions)
+                         {
+                              db.Sessions.Remove(session);
+                         }
+                    }
+                    db.SaveChanges();
+               }
+          }
+
+          internal BoolResp UserLoginAction(ULoginData data)
+          {
                var validate = new EmailAddressAttribute();
                if (validate.IsValid(data.Email))
                {
                     var pass = LoginHelper.HashGen(data.Password);
-                    using (var db = new UserContext())
+                    using (var db = new TableContext())
                     {
-                         result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == pass);
-                    }
-
-                    if (result == null)
-                    {
-                         return new ULoginResp { Status = false, StatusMsg = "The Username or Password is Incorrect" };
-                    }
-
-                    using (var todo = new UserContext())
-                    {
+                         UserTable result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == pass);
+                         if (result == null)
+                         {
+                              return new BoolResp { Status = false, StatusMsg = "Incorrect username or password." };
+                         }
                          result.LastIp = data.LoginIp;
                          result.LastLogin = data.LoginDateTime;
-                         todo.Entry(result).State = EntityState.Modified;
-                         todo.SaveChanges();
+                         db.Entry(result).State = EntityState.Modified;
+                         db.SaveChanges();
                     }
-                    return new ULoginResp { Status = true };
+                    return new BoolResp { Status = true };
                }
                else
-                    return new ULoginResp { Status = false };
+                    return new BoolResp { Status = false };
           }
 
-          internal URegisterResp UserRegisterAction(URegisterData data)
+          internal BoolResp UserRegisterAction(URegisterData data)
           {
-               UserTable existingUser;
                var validate = new EmailAddressAttribute();
                if (validate.IsValid(data.Email))
                {
-                    using (var db = new UserContext())
+                    using (var db = new TableContext())
                     {
-                         existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email);
+                         UserTable existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email);
+                         if (existingUser != null)
+                         {
+                              return new BoolResp { Status = false, StatusMsg = "Email already registered." };
+                         }
+                         var newUser = new UserTable
+                         {
+                              FirstName = "None",
+                              LastName = "None",
+                              Username = data.Username,
+                              Password = LoginHelper.HashGen(data.Password),
+                              Email = data.Email,
+                              Address = "None",
+                              Phone = "None",
+                              Image = "default.png",
+                              BirthDate = DateTime.Now.Date,
+                              LastLogin = data.LoginDateTime,
+                              LastIp = data.LoginIp,
+                              Level = (URole)0,
+                         };
+                         db.Users.Add(newUser);
+                         db.SaveChanges();
                     }
-                   
-                    if (existingUser != null)
-                    {
-                         return new URegisterResp { Status = false, StatusMsg = "User With Email Already Exists" };
-                    }
-
-                    var pass = LoginHelper.HashGen(data.Password);
-                    var newUser = new UserTable
-                    {
-                         Email = data.Email,
-                         Username = data.Username,
-                         Password = pass,
-                         LastIp = data.LoginIp,
-                         LastLogin = data.LoginDateTime,
-                         Level = (URole)0,
-                    };
-
-                    using (var todo = new UserContext())
-                    {
-                         todo.Users.Add(newUser);
-                         todo.SaveChanges();
-                    }
-                    return new URegisterResp { Status = true };
+                    return new BoolResp { Status = true };
                }
                else
-                    return new URegisterResp { Status = false };
+                    return new BoolResp { Status = false };
           }
 
+          internal BoolResp CheckUserAction(UCheckData data)
+          {
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(data.Email))
+               {
+                    using (var db = new TableContext())
+                    {
+                         UserTable existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Username == data.Username);
+                         if (existingUser == null)
+                         {
+                              return new BoolResp { Status = false, StatusMsg = "User does not exists." };
+                         }
+                    }
+                    return new BoolResp { Status = true };
+               }
+               else
+                    return new BoolResp { Status = false };
+          }
           internal HttpCookie Cookie(string loginCredential)
           {
                int sessionTime = 60;

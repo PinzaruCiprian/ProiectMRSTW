@@ -1,8 +1,8 @@
 ﻿@{
      Layout = "~/Views/Shared/_LayoutSimple.cshtml";
-     ViewBag.Title = "Login";
+     ViewBag.Title = "RecoverData";
 }
-@model SemesterProject.Model.UserLogin
+@model SemesterProject.Model.RecoverPasswordData
 
 <div class="account-pages mt-5 mb-5">
      <div class="container">
@@ -14,10 +14,10 @@
                                    <a href="/Home/Index">
                                         <span><img src="~/assets/images/logo-dark.png" alt="" height="22"></span>
                                    </a>
-                                   <p class="text-muted mb-4 mt-3">Enter your email address and password to access the full web-site.</p>
+                                   <p class="text-muted mb-4 mt-3">Enter your email address and username to recover your password.</p>
                               </div>
                               @Html.ValidationSummary(true)
-                              @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+                              @using (Html.BeginForm("RecoverData", "Login", FormMethod.Post, new { @id = "RecoverDataForm" }))
                               {
                                    @Html.AntiForgeryToken()
                                    <form action="/" novalidate id="LoginForm" method="post">
@@ -36,29 +36,18 @@
                                         </div>
 
                                         <div class="form-group mb-3">
-                                             @Html.LabelFor(m => m.Password, new { @class = "password" })
-                                             @Html.TextBoxFor(m => m.Password, new
+                                             @Html.LabelFor(m => m.Username, new { @class = "username" })
+                                             @Html.TextBoxFor(m => m.Username, new
                                         {
-                                             placeholder = "password",
-                                             title = "Enter your password",
+                                             placeholder = "username",
+                                             title = "Enter your username",
                                              value = "",
-                                             name = "password",
-                                             id = "password",
+                                             name = "username",
+                                             id = "username",
                                              @class = "form-control"
                                         })
                                         </div>
-
-                                        <div class="form-group mb-3">
-                                             <div class="custom-control custom-checkbox">
-                                                  <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
-                                                  <label class="custom-control-label" for="checkbox-signin">Remember me</label>
-                                             </div>
-                                        </div>
-
-                                        <div class="form-group mb-0 text-center">
-                                             <button type="submit" class="btn btn-primary btn-block" href="/Home/Index"> Log In </button>
-                                        </div>
-
+                                        <button type="submit" class="mb-0 text-center btn btn-primary btn-block" href="#">Next</button>
                                    </form>
                               }
 
@@ -66,8 +55,7 @@
                     </div>
                     <div class="row mt-3">
                          <div class="col-12 text-center">
-                              <p> <a href="/Login/RecoverData" class="text-primary ml-1">Forgot your password?</a></p>
-                              <p class="text-muted">Don't have an account? <a href="/Login/Register" class="text-primary font-weight-medium ml-1">Sign Up</a></p>
+                              <p class="text-muted">Changed your mind? <a href="/Login/Login" class="text-primary font-weight-medium ml-1">Sign In</a></p>
                          </div>
                     </div>
                </div>

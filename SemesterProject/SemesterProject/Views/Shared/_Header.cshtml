@@ -1,32 +1,28 @@
-﻿
-@{
+﻿@{
      var user = ViewBag.user;
      var userStatus = ViewBag.userStatus;
+     var itemsInCart = ViewBag.itemsInCart;
      ViewBag.Title = "_Header";
 }
 
 <div class="navbar-custom">
      <div class="container-fluid">
           <ul class="list-unstyled topnav-menu float-right mb-0">
-               <li class="d-none d-sm-block">
-                         <form class="app-search">
-                              <div class="app-search-box">
-                                   <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                             <button class="btn" type="submit">
-                                                  <i class="fe-search"></i>
-                                             </button>
-                                        </div>
-                                   </div>
-                              </div>
-                         </form>
-                    </li>
                @if (userStatus == "login")
                {
+                    <li class="notification-list">
+                         <a href="javascript:void(0);" class="nav-link waves-effect waves-light">
+                              <i class="fa fa-shopping-cart noti-icon"></i>
+                              @if (itemsInCart > 0)
+                              {
+                                   <span class="badge badge-pill badge-danger" style="position: absolute; top: 15px; right: 0; font-size: 12px;">@itemsInCart</span>
+                              }
+                         </a>
+                    </li>
+
                     <li class="dropdown notification-list">
                          <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                              <img src="~/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                              <img src="@Url.Content("~/assets/images/users/" + user.Image)" alt="image" class="rounded-circle">
                               <span class="pro-user-name ml-1">
                                    @user.Username<i class="mdi mdi-chevron-down"></i>
                               </span>
@@ -36,7 +32,7 @@
                                    <h6 class="text-overflow m-0">Welcome @user.Username!</h6>
                               </div>
 
-                              <a href="/Home/UserProfile" class="dropdown-item notify-item">
+                              <a href="@Url.Action("UserProfile", "Home", new { id = user.Id })" class="dropdown-item notify-item">
                                    <i class="remixicon-account-circle-line"></i>
                                    <span>Profile</span>
                               </a>
@@ -54,6 +50,15 @@
                               </a>
                          </div>
                     </li>
+
+                    if (user != null && (int)user.Level == 2)
+                    {
+                         <li class="dropdown notification-list">
+                              <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                                   <i class="fe-settings noti-icon"></i>
+                              </a>
+                         </li>
+                    }
                }
 
                @if (userStatus == "guest")
@@ -76,7 +81,7 @@
                                    <span>Log In</span>
                               </a>
 
-                              <a href="/Register/Register" class="dropdown-item notify-item">
+                              <a href="/Login/Register" class="dropdown-item notify-item">
                                    <i class="remixicon-account-circle-line"></i>
                                    <span>Sign Up</span>
                               </a>
@@ -93,37 +98,72 @@
                </a>
           </div>
 
-         @if (user != null && (int)user.Level==2)
-               {
-                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-                         <li class="dropdown d-none d-lg-block">
-                              <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                   Add New
-                                   <i class="mdi mdi-chevron-down"></i>
-                              </a>
+          <div id="navigation">
+               <ul class="list-unstyled topnav-menu topnav-menu-left m-0 navigation-menu">
+                    <li><p class="nav-link">|</p></li>
+                    <li class="dropdown dropdown-mega d-none d-lg-block"><a class="nav-link waves-effect waves-light" href="@Url.Action("SearchPage", "Home", new { type = "All" })" role="button">All Holidays</a></li>
+                    <li><p class="nav-link">|</p></li>
+                    <li class="dropdown dropdown-mega d-none d-lg-block"><a class="nav-link waves-effect waves-light" href="@Url.Action("SearchPage", "Home", new { type = "Winter" })" role="button">Winter Holidays</a></li>
+                    <li><p class="nav-link">|</p></li>
+                    <li class="dropdown dropdown-mega d-none d-lg-block"><a class="nav-link waves-effect waves-light" href="@Url.Action("SearchPage", "Home", new { type = "Summer" })" role="button">Summer Holidays</a></li>
+                    <li><p class="nav-link">|</p></li>
+                    <li class="dropdown dropdown-mega d-none d-lg-block"><a class="nav-link waves-effect waves-light" href="@Url.Action("SearchPage", "Home", new { type = "Cultural" })" role="button">Cultural Holidays</a></li>
+                    <li><p class="nav-link">|</p></li>
+                    <li class="dropdown dropdown-mega d-none d-lg-block"><a class="nav-link waves-effect waves-light" href="@Url.Action("SearchPage", "Home", new { type = "Wellness" })" role="button">Wellness Holidays</a></li>
+                    <li><p class="nav-link">|</p></li>
 
-                              <div class="dropdown-menu">
-                                   <a href="#" class="dropdown-item">
-                                        <i class="fe-briefcase mr-1"></i>
-                                        <span>New User</span>
-                                   </a>
-
-                                   <div class="dropdown-divider"></div>
-
-                                   <a href="#" class="dropdown-item">
-                                        <i class="fe-user mr-1"></i>
-                                        <span>New Flights</span>
-                                   </a>
-
-                                   <div class="dropdown-divider"></div>
-
-                                   <a href="#" class="dropdown-item">
-                                        <i class="fe-bar-chart-line- mr-1"></i>
-                                        <span>New Airline</span>
-                                   </a>
-                              </div>
-                         </li>
-                    </ul>
-          }
+               </ul>
+          </div>
      </div>
 </div>
+
+@if (user != null && (int)user.Level == 2)
+{
+     <div class="right-bar">
+          <div class="rightbar-title">
+               <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                    <i class="fe-x noti-icon"></i>
+               </a>
+               <h4 class="m-0 text-white">Settings</h4>
+          </div>
+          <div class="slimscroll-menu">
+               <div class="user-box">
+                    <div class="user-img">
+                         <img src="@Url.Content("~/assets/images/users/" + user.Image)" alt="user-img" class="rounded-circle img-fluid">
+                    </div>
+
+                    <h5>&#64;@user.Username</h5>
+               </div>
+
+               <ul class="nav nav-pills bg-light nav-justified">
+                    <li class="nav-item nav-link rounded-0 active">Admin Settings</li>
+               </ul>
+
+               <div class="tab-content pl-3 pr-3">
+                    <div class="tab-pane show active" id="home1">
+                         <h5 class="mt-0">Add New Items In Database</h5>
+                         <div class="inbox-item">
+                              <a href="/Admin/AddUser" class="dropdown-item">
+                                   <i class="fe-user mr-1"></i>
+                                   <span>Add New User</span>
+                              </a>
+
+                              <div class="dropdown-divider"></div>
+
+                              <a href="/Admin/AddCompany" class="dropdown-item">
+                                   <i class="fe-briefcase mr-1"></i>
+                                   <span>Add New Airline</span>
+                              </a>
+
+                              <div class="dropdown-divider"></div>
+
+                              <a href="/Admin/AddFlight" class="dropdown-item">
+                                   <i class="fe-bar-chart-line- mr-1"></i>
+                                   <span>Add New Flights</span>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+}

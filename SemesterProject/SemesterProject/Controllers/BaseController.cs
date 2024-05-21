@@ -18,21 +18,7 @@ namespace SemesterProject.Controllers
                _session = bl.GetSessionBL();
           }
 
-          public void RemoveExpiredSessions()
-          {
-               using (var db = new SessionContext())
-               {
-                    var expiredSessions = db.Sessions.Where(s => s.ExpireTime < DateTime.Now).ToList();
-                    if (expiredSessions.Any())
-                    {
-                         foreach (var session in expiredSessions)
-                         {
-                              db.Sessions.Remove(session);
-                         }
-                         db.SaveChanges();
-                    }
-               }
-          }
+
           public void SessionStatus()
           {
                var apiCookie = Request.Cookies["X-KEY"];
@@ -43,28 +29,16 @@ namespace SemesterProject.Controllers
                     {
                          System.Web.HttpContext.Current.SetMySessionObject(profile);
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
-                         System.Web.HttpContext.Current.Session["Email"] = profile.Email;
                     }
                     else
                     {
                          System.Web.HttpContext.Current.Session.Clear();
-                         if (ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("X-KEY"))
-                         {
-                              var cookie = ControllerContext.HttpContext.Request.Cookies["X-KEY"];
-                              if (cookie != null)
-                              {
-                                   cookie.Expires = DateTime.Now.AddDays(-1);
-                                   ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                              }
-                         }
                          System.Web.HttpContext.Current.Session["LoginStatus"] = "guest";
-                         RemoveExpiredSessions();
                     }
                }
                else
                {
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "guest";
-                    RemoveExpiredSessions();
                }
           }
      }

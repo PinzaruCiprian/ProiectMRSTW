@@ -14,12 +14,8 @@
      <header id="topnav">
           @Html.Partial("_Header")
      </header>
-     <div class="wrapper">
-          <div class="container-fluid">
-               @RenderBody()
-          </div>
-     </div>
 
+     @RenderBody()
      @Html.Partial("_Footer")
 
      @Scripts.Render("~/assets/js")
