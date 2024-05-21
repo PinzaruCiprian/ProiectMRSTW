@@ -51,12 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Admin\AddCompanyData.cs" />
+    <Compile Include="Entities\Admin\AddFlightData.cs" />
+    <Compile Include="Entities\Admin\AddUserData.cs" />
+    <Compile Include="Entities\Admin\BoolResp.cs" />
+    <Compile Include="Entities\Admin\EditCompanyData.cs" />
+    <Compile Include="Entities\Admin\EditFlightData.cs" />
+    <Compile Include="Entities\Admin\EditUserData.cs" />
+    <Compile Include="Entities\Airline\CompanyTable.cs" />
+    <Compile Include="Entities\Airline\FlightTable.cs" />
+    <Compile Include="Entities\User\PurchaseTable.cs" />
     <Compile Include="Entities\User\Session.cs" />
+    <Compile Include="Entities\User\UCheckData.cs" />
     <Compile Include="Entities\User\URegisterData.cs" />
-    <Compile Include="Entities\User\URegisterResp.cs" />
     <Compile Include="Entities\User\UserTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
-    <Compile Include="Entities\User\ULoginResp.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />
     <Compile Include="Enums\URole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +80,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

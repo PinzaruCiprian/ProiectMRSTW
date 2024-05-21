@@ -1,0 +1,163 @@
+﻿@{
+     ViewBag.Title = "EditFlight";
+     var FlightToEdit = ViewBag.Flight;
+     List<string> TypeList = ViewBag.TypeList;
+}
+@model SemesterProject.Model.EditFlight
+
+<div class="row">
+     <div class="col-lg-12">
+          <div class="card">
+               <div class="card-body">
+                    <h4 class="header-title">Edit an Existing Flight</h4>
+                    <p class="sub-header">Here you can edit an existing flight.</p>
+
+                    @Html.ValidationSummary(true)
+                    @using (Html.BeginForm("EditFlight", "Admin", FormMethod.Post, new { @id = "EditFlightForm" }))
+                    {
+                         @Html.AntiForgeryToken()
+                         <form class="needs-validation" novalidate>
+                              <div class="row">
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.StartAdress, "Start Address", new { @for = "validationCustom01" })
+                                        @Html.TextBoxFor(m => m.StartAdress, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom01",
+                                        placeholder = "Start Address",
+                                        required = true,
+                                        title = "Start Address",
+                                        @readonly = "readonly"
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.EndAdress, "End Address", new { @for = "validationCustom02" })
+                                        @Html.TextBoxFor(m => m.EndAdress, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom02",
+                                        placeholder = "End Address",
+                                        required = true,
+                                        title = "End Address",
+                                        @readonly = "readonly"
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.StartDate, "Start Date", new { @for = "validationCustom03" })
+                                        @Html.TextBoxFor(m => m.StartDate, "{0:yyyy-MM-dd}", new
+                                   {
+                                        type = "date",
+                                        @class = "form-control",
+                                        id = "validationCustom03",
+                                        placeholder = "Start Date",
+                                        required = true,
+                                        title = "Start Date",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.EndDate, "End Date", new { @for = "validationCustom04" })
+                                        @Html.TextBoxFor(m => m.EndDate, "{0:yyyy-MM-dd}", new
+                                   {
+                                        type = "date",
+                                        @class = "form-control",
+                                        id = "validationCustom04",
+                                        placeholder = "End Date",
+                                        required = true,
+                                        title = "End Date",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+
+                                        @Html.LabelFor(m => m.StartHour, "Start Hour", new { @for = "validationCustom09" })
+                                        @Html.TextBoxFor(m => m.StartHour, "{0:hh:mm}", new
+                                   {
+                                        type = "time",
+                                        @class = "form-control",
+                                        id = "validationCustom09",
+                                        placeholder = "Start Hour",
+                                        required = true,
+                                        title = "Start Hour",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.EndHour, "End Hour", new { @for = "validationCustom10" })
+                                        @Html.TextBoxFor(m => m.EndHour, "{0:hh:mm}", new
+                                   {
+                                        type = "time",
+                                        @class = "form-control",
+                                        id = "validationCustom10",
+                                        placeholder = "End Hour",
+                                        required = true,
+                                        title = "End Hour",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.StartAirport, "Start Airport", new { @for = "validationCustom07" })
+                                        @Html.TextBoxFor(m => m.StartAirport, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom07",
+                                        placeholder = "Start Airport",
+                                        required = true,
+                                        title = "Start Airport",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-6">
+                                        @Html.LabelFor(m => m.EndAirport, "End Airport", new { @for = "validationCustom08" })
+                                        @Html.TextBoxFor(m => m.EndAirport, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom08",
+                                        placeholder = "End Airport",
+                                        required = true,
+                                        title = "End Airport",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.CompanyName, "Company Name", new { @for = "validationCustom05" })
+                                        @Html.TextBoxFor(m => m.CompanyName, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom05",
+                                        placeholder = "Company Name",
+                                        required = true,
+                                        title = "Company Name",
+                                        @readonly = "readonly"
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Type, "Type", new { @for = "validationCustom11" })
+
+                                        @Html.DropDownListFor(m => m.Type, new SelectList(ViewBag.TypeList as System.Collections.IEnumerable, "Text"), "Select a type", new
+                                                                           {
+                                                                                   @class = "form-control",
+                                                                                   id = "validationCustom11",
+                                                                                   required = "required",
+                                                                                   title = "Type"
+                                                                           })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Price, "Price", new { @for = "validationCustom06" })
+                                        @Html.TextBoxFor(m => m.Price, new
+                                   {
+                                        type = "number",
+                                        @class = "form-control",
+                                        id = "validationCustom06",
+                                        placeholder = "Price",
+                                        required = true,
+                                        title = "Price",
+                                   })
+                                   </div>
+                              </div>
+                              <button class="btn btn-primary" href="#" type="submit">Edit Flight</button>
+                         </form>
+                    }
+               </div>
+          </div>
+     </div>
+</div>

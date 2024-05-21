@@ -118,6 +118,7 @@
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\icons.css" />
     <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\style.css" />
     <Content Include="assets\fonts\dropify.svg" />
     <Content Include="assets\fonts\fa-brands-400.svg" />
     <Content Include="assets\fonts\fa-regular-400.svg" />
@@ -129,51 +130,14 @@
     <Content Include="assets\fonts\remixicon.symbol.svg" />
     <Content Include="assets\fonts\themify.svg" />
     <Content Include="assets\fonts\weathericons-regular-webfont.svg" />
-    <Content Include="assets\images\favicon.ico" />
-    <Content Include="assets\images\file-icons\3ds.svg" />
-    <Content Include="assets\images\file-icons\aac.svg" />
-    <Content Include="assets\images\file-icons\ai.svg" />
-    <Content Include="assets\images\file-icons\avi.svg" />
-    <Content Include="assets\images\file-icons\bmp.svg" />
-    <Content Include="assets\images\file-icons\cad.svg" />
-    <Content Include="assets\images\file-icons\cdr.svg" />
-    <Content Include="assets\images\file-icons\css.svg" />
-    <Content Include="assets\images\file-icons\dat.svg" />
-    <Content Include="assets\images\file-icons\dll.svg" />
-    <Content Include="assets\images\file-icons\dmg.svg" />
-    <Content Include="assets\images\file-icons\doc.svg" />
-    <Content Include="assets\images\file-icons\eps.svg" />
-    <Content Include="assets\images\file-icons\fla.svg" />
-    <Content Include="assets\images\file-icons\flv.svg" />
-    <Content Include="assets\images\file-icons\gif.svg" />
-    <Content Include="assets\images\file-icons\html.svg" />
-    <Content Include="assets\images\file-icons\indd.svg" />
-    <Content Include="assets\images\file-icons\iso.svg" />
-    <Content Include="assets\images\file-icons\jpg.svg" />
-    <Content Include="assets\images\file-icons\js.svg" />
-    <Content Include="assets\images\file-icons\midi.svg" />
-    <Content Include="assets\images\file-icons\mov.svg" />
-    <Content Include="assets\images\file-icons\mp3.svg" />
-    <Content Include="assets\images\file-icons\mpg.svg" />
-    <Content Include="assets\images\file-icons\pdf.svg" />
-    <Content Include="assets\images\file-icons\php.svg" />
-    <Content Include="assets\images\file-icons\png.svg" />
-    <Content Include="assets\images\file-icons\ppt.svg" />
-    <Content Include="assets\images\file-icons\ps.svg" />
-    <Content Include="assets\images\file-icons\psd.svg" />
-    <Content Include="assets\images\file-icons\raw.svg" />
-    <Content Include="assets\images\file-icons\sql.svg" />
-    <Content Include="assets\images\file-icons\svg.svg" />
-    <Content Include="assets\images\file-icons\tif.svg" />
-    <Content Include="assets\images\file-icons\txt.svg" />
-    <Content Include="assets\images\file-icons\wmv.svg" />
-    <Content Include="assets\images\file-icons\xls.svg" />
-    <Content Include="assets\images\file-icons\xml.svg" />
-    <Content Include="assets\images\file-icons\zip.svg" />
+    <Content Include="assets\images\features\photo_1_2024-05-21_11-50-41.jpg" />
+    <Content Include="assets\images\features\photo_2_2024-05-21_11-50-41.jpg" />
+    <Content Include="assets\images\features\photo_3_2024-05-21_11-50-41.jpg" />
+    <Content Include="assets\images\features\photo_4_2024-05-21_11-50-41.jpg" />
     <Content Include="assets\images\logo-dark.png" />
     <Content Include="assets\images\logo-light.png" />
     <Content Include="assets\images\megamenu-bg.png" />
-    <Content Include="assets\images\users\avatar-1.jpg" />
+    <Content Include="assets\images\users\default.png" />
     <Content Include="assets\images\users\guest.jpg" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\main.js" />
@@ -245,21 +209,28 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Atributes\AdminModeAttribute.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\AddCompany.cs" />
+    <Compile Include="Model\AddFlight.cs" />
+    <Compile Include="Model\AddUser.cs" />
+    <Compile Include="Model\EditCompany.cs" />
+    <Compile Include="Model\EditFlight.cs" />
+    <Compile Include="Model\EditUser.cs" />
+    <Compile Include="Model\RecoverPassword.cs" />
+    <Compile Include="Model\RecoverPasswordData.cs" />
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Model\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -329,9 +300,19 @@
     <None Include="packages.config" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutSimple.cshtml" />
-    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Home\SearchPage.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
+    <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Login\Recover.cshtml" />
+    <Content Include="Views\Login\RecoverData.cshtml" />
+    <Content Include="Views\Home\FlightData.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\AddCompany.cshtml" />
+    <Content Include="Views\Admin\AddFlight.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\EditCompany.cshtml" />
+    <Content Include="Views\Admin\EditFlight.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -339,7 +320,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="assets\images\companies\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eUseControl.BussinessLogic\SemesterProject.BussinessLogic.csproj">
       <Project>{f9b14214-3408-419a-9968-af2580290f7a}</Project>

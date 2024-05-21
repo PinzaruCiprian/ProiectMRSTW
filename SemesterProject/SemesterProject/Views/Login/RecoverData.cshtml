@@ -1,0 +1,64 @@
+﻿@{
+     Layout = "~/Views/Shared/_LayoutSimple.cshtml";
+     ViewBag.Title = "RecoverData";
+}
+@model SemesterProject.Model.RecoverPasswordData
+
+<div class="account-pages mt-5 mb-5">
+     <div class="container">
+          <div class="row justify-content-center">
+               <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card">
+                         <div class="card-body p-4">
+                              <div class="text-center w-75 m-auto">
+                                   <a href="/Home/Index">
+                                        <span><img src="~/assets/images/logo-dark.png" alt="" height="22"></span>
+                                   </a>
+                                   <p class="text-muted mb-4 mt-3">Enter your email address and username to recover your password.</p>
+                              </div>
+                              @Html.ValidationSummary(true)
+                              @using (Html.BeginForm("RecoverData", "Login", FormMethod.Post, new { @id = "RecoverDataForm" }))
+                              {
+                                   @Html.AntiForgeryToken()
+                                   <form action="/" novalidate id="LoginForm" method="post">
+
+                                        <div class="form-group mb-3">
+                                             @Html.LabelFor(m => m.Email, new { @class = "emailadress" })
+                                             @Html.TextBoxFor(m => m.Email, new
+                                        {
+                                             placeholder = "example@gmail.com",
+                                             title = "Enter your email",
+                                             value = "",
+                                             name = "email",
+                                             id = "emailaddress",
+                                             @class = "form-control"
+                                        })
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                             @Html.LabelFor(m => m.Username, new { @class = "username" })
+                                             @Html.TextBoxFor(m => m.Username, new
+                                        {
+                                             placeholder = "username",
+                                             title = "Enter your username",
+                                             value = "",
+                                             name = "username",
+                                             id = "username",
+                                             @class = "form-control"
+                                        })
+                                        </div>
+                                        <button type="submit" class="mb-0 text-center btn btn-primary btn-block" href="#">Next</button>
+                                   </form>
+                              }
+
+                         </div>
+                    </div>
+                    <div class="row mt-3">
+                         <div class="col-12 text-center">
+                              <p class="text-muted">Changed your mind? <a href="/Login/Login" class="text-primary font-weight-medium ml-1">Sign In</a></p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

@@ -3,23 +3,21 @@
      var user = ViewBag.user;
      ViewBag.Title = "UserProfile";
 }
+@model SemesterProject.Model.EditUser
 
 <div class="row">
      <div class="col-lg-4 col-xl-4">
           <div class="card-box text-center">
-               <img src="~/assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xl img-thumbnail"
-                    alt="profile-image">
-
-               <h4 class="mb-0">@user.Username</h4>
-               <p class="text-muted">Description</p>
+               <img src="@Url.Content("~/assets/images/users/" + user.Image)" class="rounded-circle avatar-xl img-thumbnail"
+                    alt="profile">
+               <h4 class="mb-0">&#64;@user.Username</h4>
 
                <div class="text-left mt-3">
-                    <h4 class="font-15 text-uppercase">Profile:</h4>
-                    <p class="text-dark mb-3 font-14"><strong>Full Name:</strong> <span class="text-muted ml-2">@user.Username @user.Username</span></p>
+                    <p class="text-dark mb-3 font-14"><strong>Full Name:</strong> <span class="text-muted ml-2">@user.FirstName @user.LastName</span></p>
                     <p class="text-dark mb-3 font-14"><strong>Email:</strong> <span class="text-muted ml-2">@user.Email</span></p>
-                    <p class="text-dark mb-3 font-14"><strong>Phone Number:</strong> <span class="text-muted ml-2">##########</span></p>
-                    <p class="text-dark mb-3 font-14"><strong>Birth Date:</strong> <span class="text-muted ml-2">##########</span></p>
-                    <p class="text-dark mb-3 font-14"><strong>Adress:</strong> <span class="text-muted ml-2">##########</span></p>
+                    <p class="text-dark mb-3 font-14"><strong>Address:</strong> <span class="text-muted ml-2">@user.Address</span></p>
+                    <p class="text-dark mb-3 font-14"><strong>Phone Number:</strong> <span class="text-muted ml-2">@user.Phone</span></p>
+                    <p class="text-dark mb-3 font-14"><strong>Birth Date:</strong> <span class="text-muted ml-2">@user.BirthDate.Date.ToString("MM/dd/yyyy")</span></p>
                </div>
           </div>
      </div>
@@ -28,74 +26,135 @@
           <div class="card-box">
                <div class="tab-content">
                     <div class="tab-pane show active" id="settings">
-                         <form>
-                              <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Personal Info</h5>
-                              <div class="row">
-                                   <div class="col-md-6">
-                                        <div class="form-group">
-                                             <label for="firstname">First Name</label>
-                                             <input type="text" class="form-control" value="@user.Username" id="firstname" placeholder="Enter first name">
-                                        </div>
-                                   </div>
-                                   <div class="col-md-6">
-                                        <div class="form-group">
-                                             <label for="lastname">Last Name</label>
-                                             <input type="text" class="form-control" value="@user.Username" id="lastname" placeholder="Enter last name">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-md-6">
-                                        <div class="form-group">
-                                             <label for="useremail">Email Address</label>
-                                             <input type="email" class="form-control" value="@user.Email" id="useremail" placeholder="Enter email">
-                                        </div>
-                                   </div>
-                                   <div class="col-md-6">
-                                        <div class="form-group">
-                                             <label for="userpassword">Phone Number</label>
-                                             <input type="number" class="form-control" value="000000000" id="phone" placeholder="Enter phone number">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-md-6">
-                                        <div class="form-group">
-                                             <label for="userpassword">Password</label>
-                                             <input type="password" class="form-control" readonly value="@user.Password" id="password" placeholder="Enter phone number">
-                                             <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
-                                        </div>
-                                   </div>
-                              </div>
+                         @Html.ValidationSummary(true)
+                         @using (Html.BeginForm("UserProfile", "Home", FormMethod.Post, new { @id = "EditUserForm", enctype = "multipart/form-data" }))
+                         {
+                              @Html.AntiForgeryToken()
+                              <form class="needs-validation" novalidate>
+                                   <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Personal Info</h5>
 
-                              <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth mr-1"></i> Flights</h5>
-                              <div class="table-responsive">
-                                   <table class="table table-borderless mb-0">
-                                        <thead class="thead-light">
-                                             <tr>
-                                                  <th>#</th>
-                                                  <th>Start Loc.</th>
-                                                  <th>End Loc.</th>
-                                                  <th>Start Time</th>
-                                                  <th>End Time</th>
-                                                  <th>Status</th>
-                                                  <th>Company</th>
-                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                             <tr>
-                                                  <td>1</td>
-                                                  <td>Chişinău</td>
-                                                  <td>Budapest</td>
-                                                  <td>15:25 04/23/2024</td>
-                                                  <td>16:00 04/23/2024</td>
-                                                  <td><span class="badge badge-pink">Done</span></td>
-                                                  <td>Wizz Air Hungary</td>
-                                             </tr>
-                                        </tbody>
-                                   </table>
-                              </div>
-                         </form>
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                             @Html.LabelFor(m => m.FirstName, "First Name", new { @for = "validationCustom01" })
+                                             @Html.TextBoxFor(m => m.FirstName, new
+                                        {
+                                             type = "text",
+                                             @class = "form-control",
+                                             id = "validationCustom01",
+                                             placeholder = "Enter your first name",
+                                             required = true,
+                                             title = "First Name",
+                                        })
+                                        </div>
+
+                                        <div class="col-md-6">
+                                             @Html.LabelFor(m => m.LastName, "Last Name", new { @for = "validationCustom02" })
+                                             @Html.TextBoxFor(m => m.LastName, new
+                                        {
+                                             type = "text",
+                                             @class = "form-control",
+                                             id = "validationCustom02",
+                                             placeholder = "Enter your last name",
+                                             required = true,
+                                             title = "Last Name",
+                                        })
+                                        </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                             @Html.LabelFor(m => m.Email, "Email", new { @for = "validationCustom03" })
+                                             @Html.TextBoxFor(m => m.Email, new
+                                        {
+                                             type = "email",
+                                             @class = "form-control",
+                                             id = "validationCustom03",
+                                             placeholder = "Enter your email",
+                                             required = true,
+                                             title = "Email",
+                                             @readonly = "readonly"
+                                        })
+                                        </div>
+
+                                        <div class="col-md-6">
+                                             @Html.LabelFor(m => m.Phone, "Phone", new { @for = "validationCustom04" })
+                                             @Html.TextBoxFor(m => m.Phone, new
+                                        {
+                                             type = "number",
+                                             @class = "form-control",
+                                             id = "validationCustom04",
+                                             placeholder = "Enter your phone",
+                                             required = true,
+                                             title = "Phone",
+                                        })
+                                        </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="col-md-6">
+                                             @Html.LabelFor(m => m.BirthDate, "Birth Date", new { @for = "validationCustom05" })
+                                             @Html.TextBoxFor(m => m.BirthDate, "{0:yyyy-MM-dd}", new
+                                        {
+                                             type = "date",
+                                             @class = "form-control",
+                                             id = "validationCustom05",
+                                             placeholder = "Enter your birth date",
+                                             required = true,
+                                             title = "Birth Date",
+                                        })
+                                        </div>
+                                        <div class="col-md-6">
+                                             @Html.LabelFor(m => m.Address, "Address", new { @for = "validationCustom06" })
+                                             @Html.TextBoxFor(m => m.Address, new
+                                        {
+                                             type = "text",
+                                             @class = "form-control",
+                                             id = "validationCustom06",
+                                             placeholder = "Enter your address",
+                                             required = true,
+                                             title = "Address",
+                                        })
+                                        </div>
+                                   </div>
+                                   <div class="row">
+
+                                        <div class="col-md-6">
+                                             @Html.Label("Profile Picture", new { @for = "imageFile" })
+                                             <input type="file" id="imageFile" name="imageFile" accept="image/png" class="form-control" />
+                                        </div>
+                                        <div class="col-md-6">
+                                             @Html.Label(" ", new { @for = "validationCustom08" })
+                                             <button class="form-control btn btn-primary" href="#" type="submit">Edit User</button>
+                                        </div>
+                                   </div>
+
+                                   <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth mr-1"></i> Flights</h5>
+                                   <div class="table-responsive">
+                                        <table class="table table-borderless mb-0">
+                                             <thead class="thead-light">
+                                                  <tr>
+                                                       <th>#</th>
+                                                       <th>Start Loc.</th>
+                                                       <th>End Loc.</th>
+                                                       <th>Start Time</th>
+                                                       <th>End Time</th>
+                                                       <th>Status</th>
+                                                       <th>Company</th>
+                                                  </tr>
+                                             </thead>
+                                             <tbody>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Chişinău</td>
+                                                       <td>Budapest</td>
+                                                       <td>15:25 04/23/2024</td>
+                                                       <td>16:00 04/23/2024</td>
+                                                       <td><span class="badge badge-pink">Done</span></td>
+                                                       <td>Wizz Air Hungary</td>
+                                                  </tr>
+                                             </tbody>
+                                        </table>
+                                   </div>
+                              </form>
+                         }
                     </div>
                </div>
           </div>

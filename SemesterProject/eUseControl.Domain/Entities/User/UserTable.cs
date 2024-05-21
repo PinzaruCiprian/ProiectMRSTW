@@ -15,27 +15,40 @@ namespace eUseControl.Domain.Entities.User
           [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
           public int Id { get; set; }
 
-          [Required]
+          [Display(Name = "FirstName")]
+          public string FirstName { get; set; }
+
+          [Display(Name = "LastName")]
+          public string LastName { get; set; }
+
           [Display(Name = "Username")]
-          [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 characters.")]
           public string Username { get; set; }
 
-          [Required]
           [Display(Name = "Password")]
-          [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter than 8 characters.")]
           public string Password { get; set; }
 
-          [Required]
           [Display(Name = "Email Address")]
-          [StringLength(30)]
           public string Email { get; set; }
 
-          [DataType(DataType.Date)]
+          [Display(Name = "Address")]
+          public string Address { get; set; }
+
+          [Display(Name = "Phone")]
+          public string Phone { get; set; }
+
+          [Display(Name = "Image")]
+          public string Image { get; set; }
+
+          [Display(Name = "Birth Date")]
+          public DateTime BirthDate { get; set; }
+
+          [Display(Name = "Last Login")]
           public DateTime LastLogin { get; set; }
 
-          [StringLength(30)]
+          [Display(Name = "Last Ip")]
           public string LastIp { get; set; }
 
+          [Display(Name = "Level")]
           public URole Level { get; set; }
      }
 }

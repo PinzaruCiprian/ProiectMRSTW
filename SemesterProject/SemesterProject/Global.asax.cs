@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eUseControl.Domain.Entities.Admin;
 using eUseControl.Domain.Entities.User;
 using SemesterProject.App_Start;
 using SemesterProject.Model;
@@ -31,7 +32,16 @@ namespace SemesterProject
                {
                     cfg.CreateMap<UserLogin, ULoginData>();
                     cfg.CreateMap<UserRegister, URegisterData>();
+                    cfg.CreateMap<RecoverPasswordData, UCheckData>();
                     cfg.CreateMap<UserTable, UserMinimal>();
+
+                    cfg.CreateMap<AddUser, AddUserData>();
+                    cfg.CreateMap<AddCompany, AddCompanyData>();
+                    cfg.CreateMap<AddFlight, AddFlightData>();
+
+                    cfg.CreateMap<EditUser, EditUserData>();
+                    cfg.CreateMap<EditCompany, EditCompanyData>();
+                    cfg.CreateMap<EditFlight, EditFlightData>();
                });
           }
      }

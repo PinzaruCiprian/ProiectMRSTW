@@ -1,0 +1,81 @@
+﻿@{
+     ViewBag.Title = "EditCompany";
+     var companyToEdit = ViewBag.company;
+}
+@model SemesterProject.Model.EditCompany
+
+<div class="row">
+     <div class="col-lg-12">
+          <div class="card">
+               <div class="card-body">
+                    <h4 class="header-title">Edit an Existing Company</h4>
+                    <p class="sub-header">Here you can edit an existing company.</p>
+
+                    @Html.ValidationSummary(true)
+                    @using (Html.BeginForm("EditCompany", "Admin", FormMethod.Post, new { @id = "EditCompanyForm", enctype = "multipart/form-data" }))
+                    {
+                         @Html.AntiForgeryToken()
+                         <form class="needs-validation" novalidate>
+                              <div class="row">
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Name, "Company Name", new { @for = "validationCustom01" })
+                                        @Html.TextBoxFor(m => m.Name, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom01",
+                                        placeholder = "Company Name",
+                                        required = true,
+                                        title = "Company Name",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Description, "Description", new { @for = "validationCustom02" })
+                                        @Html.TextBoxFor(m => m.Description, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom04",
+                                        placeholder = "Description",
+                                        required = true,
+                                        title = "Description",
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Email, "Email", new { @for = "validationCustom03" })
+                                        @Html.TextBoxFor(m => m.Email, new
+                                   {
+                                        type = "email",
+                                        @class = "form-control",
+                                        id = "validationCustom03",
+                                        placeholder = "Email",
+                                        required = true,
+                                        title = "Email",
+                                        @readonly = "readonly"
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Phone, "Phone", new { @for = "validationCustom04" })
+                                        @Html.TextBoxFor(m => m.Phone, new
+                                   {
+                                        type = "number",
+                                        @class = "form-control",
+                                        id = "validationCustom05",
+                                        placeholder = "Phone",
+                                        required = true,
+                                        title = "Phone",
+                                   })
+                                   </div>
+                                   <div class="col-lg-4">
+                                        @Html.Label("Profile Picture", new { @for = "imageFile" })
+
+                                        <input type="file" id="imageFile" required name="imageFile" accept="image/png" class="form-control" />
+                                   </div>
+                              </div>
+                              <button class="btn btn-primary" href="#" type="submit">Edit Company</button>
+                         </form>
+                    }
+               </div>
+          </div>
+     </div>
+</div>

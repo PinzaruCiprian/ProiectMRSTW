@@ -1,7 +1,6 @@
-﻿
-@{
-    Layout = "~/Views/Shared/_LayoutSimple.cshtml";
-    ViewBag.Title = "Login";
+﻿@{
+     Layout = "~/Views/Shared/_LayoutSimple.cshtml";
+     ViewBag.Title = "Login";
 }
 @model SemesterProject.Model.UserLogin
 
@@ -12,10 +11,10 @@
                     <div class="card">
                          <div class="card-body p-4">
                               <div class="text-center w-75 m-auto">
-                                   <a href="index.html">
+                                   <a href="/Home/Index">
                                         <span><img src="~/assets/images/logo-dark.png" alt="" height="22"></span>
                                    </a>
-                                   <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
+                                   <p class="text-muted mb-4 mt-3">Enter your email address and password to access the full web-site.</p>
                               </div>
                               @Html.ValidationSummary(true)
                               @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @id = "LoginForm" }))
@@ -67,8 +66,8 @@
                     </div>
                     <div class="row mt-3">
                          <div class="col-12 text-center">
-                              <p> <a href="pages-recoverpw.html" class="text-muted ml-1">Forgot your password?</a></p>
-                              <p class="text-muted">Don't have an account? <a href="/Register/Register" class="text-primary font-weight-medium ml-1">Sign Up</a></p>
+                              <p> <a href="/Login/RecoverData" class="text-primary ml-1">Forgot your password?</a></p>
+                              <p class="text-muted">Don't have an account? <a href="/Login/Register" class="text-primary font-weight-medium ml-1">Sign Up</a></p>
                          </div>
                     </div>
                </div>

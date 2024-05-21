@@ -1,0 +1,183 @@
+﻿@{
+     ViewBag.Title = "AddUser";
+     var usersList = ViewBag.usersList;
+}
+@model SemesterProject.Model.AddUser
+
+<div class="row">
+     <div class="col-lg-12">
+          <div class="card">
+               <div class="card-body">
+                    <h4 class="header-title">Add a New User</h4>
+                    <p class="sub-header">Here you can add a new user.</p>
+
+                    @Html.ValidationSummary(true)
+                    @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { @id = "AddUserForm" }))
+                    {
+                         @Html.AntiForgeryToken()
+                         <form class="needs-validation" novalidate>
+                              <div class="row">
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.FirstName, "First Name", new { @for = "validationCustom01" })
+                                        @Html.TextBoxFor(m => m.FirstName, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom01",
+                                        placeholder = "First Name",
+                                        required = true,
+                                        title = "First Name",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.LastName, "Last Name", new { @for = "validationCustom02" })
+                                        @Html.TextBoxFor(m => m.LastName, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom02",
+                                        placeholder = "Last Name",
+                                        required = true,
+                                        title = "Last Name",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Username, "Username", new { @for = "validationCustomUsername" })
+                                        <div class="input-group">
+                                             <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+                                             </div>
+                                             @Html.TextBoxFor(m => m.Username, new
+                                        {
+                                             type = "text",
+                                             @class = "form-control",
+                                             id = "validationCustomUsername",
+                                             placeholder = "Username",
+                                             required = true,
+                                             title = "Username",
+                                             value = ""
+                                        })
+                                        </div>
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Email, "Email", new { @for = "validationCustom03" })
+                                        @Html.TextBoxFor(m => m.Email, new
+                                   {
+                                        type = "email",
+                                        @class = "form-control",
+                                        id = "validationCustom03",
+
+
+                                             
+placeholder = "Email",
+                                        required = true,
+                                        title = "Email",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Address, "Address", new { @for = "validationCustom04" })
+                                        @Html.TextBoxFor(m => m.Address, new
+                                   {
+                                        type = "text",
+                                        @class = "form-control",
+                                        id = "validationCustom04",
+                                        placeholder = "Address",
+                                        required = true,
+                                        title = "Address",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Phone, "Phone", new { @for = "validationCustom05" })
+                                        @Html.TextBoxFor(m => m.Phone, new
+                                   {
+                                        type = "number",
+                                        @class = "form-control",
+                                        id = "validationCustom05",
+                                        placeholder = "Phone",
+                                        required = true,
+                                        title = "Phone",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Level, "Role", new { @for = "validationCustom06" })
+                                        @Html.TextBoxFor(m => m.Level, new
+                                   {
+                                        type = "number",
+                                        @class = "form-control",
+                                        id = "validationCustom06",
+                                        placeholder = "Role",
+                                        required = true,
+                                        title = "Role",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.BirthDate, "Birth Date", new { @for = "validationCustom07" })
+                                        @Html.TextBoxFor(m => m.BirthDate, new
+                                   {
+                                        type = "date",
+                                        @class = "form-control",
+                                        id = "validationCustom07",
+                                        placeholder = "Birth Date",
+                                        required = true,
+                                        title = "Birth Date",
+                                        value = ""
+                                   })
+                                   </div>
+                                   <div class="form-group col-lg-4">
+                                        @Html.LabelFor(m => m.Password, "Password", new { @for = "validationCustom08" })
+                                        @Html.TextBoxFor(m => m.Password, new
+                                   {
+                                        type = "password",
+                                        @class = "form-control",
+                                        id = "validationCustom8",
+                                        placeholder = "Password",
+                                        required = true,
+
+                                             
+title = "Password",
+                                        value = ""
+                                   })
+                                   </div>
+                              </div>
+                              <button class="btn btn-primary" href="#" type="submit">Add User</button>
+                         </form>
+                    }
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="row">
+     @foreach (var user in usersList)
+     {
+          <div class="col-lg-4">
+               <div class="text-center card-box ribbon-box">
+                    @if ((int)@user.Level == 2)
+                    {<div class="ribbon-two ribbon-two-primary"><span>Admin</span></div>}
+                    else if ((int)@user.Level == 1)
+                    {<div class="ribbon-two ribbon-two-secondary"><span>Moderator</span></div>}
+                    <img src="@Url.Content("~/assets/images/users/" + user.Image)" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
+                    <h4 class="font-17">@user.FirstName @user.LastName</h4>
+                    <h4 class="text-muted font-13">&#64;@user.Username</h4>
+                    <div class="dropdown-divider"></div>
+                    <div class="text-left">
+                         <h4 class="text-primary font-13"><span class="text-dark">Email: </span>@user.Email</h4>
+                         <h4 class="text-primary font-13"><span class="text-dark">Address: </span>@user.Address</h4>
+                         <h4 class="text-primary font-13"><span class="text-dark">Phone: </span>@user.Phone</h4>
+                         <h4 class="text-primary font-13"><span class="text-dark">Birth Date: </span>@user.BirthDate.Date.ToString("MM/dd/yyyy")</h4>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="text-center">
+                         <a class="btn btn-sm btn-info" href="@Url.Action("EditUser", "Admin", new { id = user.Id })">Edit</a>
+                         <a class="btn btn-sm btn-danger" href="@Url.Action("DeleteUser", "Admin", new {id = user.Id})">Delete</a>
+                    </div>
+               </div>
+          </div>
+     }
+</div>

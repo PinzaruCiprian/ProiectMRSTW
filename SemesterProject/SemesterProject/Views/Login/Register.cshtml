@@ -1,0 +1,101 @@
+﻿@{
+     Layout = "~/Views/Shared/_LayoutSimple.cshtml";
+     ViewBag.Title = "Register";
+}
+
+@model SemesterProject.Model.UserRegister
+
+<div class="account-pages mt-5 mb-5">
+     <div class="container">
+          <div class="row justify-content-center">
+               <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card">
+
+                         <div class="card-body p-4">
+
+                              <div class="text-center w-75 m-auto">
+                                   <a href="/Home/Index">
+                                        <span><img src="~/assets/images/logo-dark.png" alt="" height="22"></span>
+                                   </a>
+                                   <p class="text-muted mb-4 mt-3">Don't have an account? Create your own account, it takes less than a minute</p>
+                              </div>
+                              @Html.ValidationSummary(true)
+                              @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @id = "RegisterForm" }))
+                              {
+                                   @Html.AntiForgeryToken()
+                                   <form action="/" novalidate id="RegisterForm" method="post">
+
+                                        <div class="form-group">
+                                             @Html.LabelFor(m => m.Username, "Username", new { @class = "Username" })
+                                             @Html.TextBoxFor(m => m.Username, new
+                                        {
+                                             placeholder = "Username",
+                                             title = "Enter your Username",
+                                             value = "",
+                                             name = "Username",
+                                             id = "fullname",
+                                             required = true,
+                                             @class = "form-control"
+                                        })
+                                        </div>
+                                        <div class="form-group">
+                                             @Html.LabelFor(m => m.Email, "Email", new { @class = "emailadress" })
+                                             @Html.TextBoxFor(m => m.Email, new
+                                        {
+                                             placeholder = "example@gmail.com",
+                                             title = "Enter your Email",
+                                             value = "",
+                                             name = "Email",
+                                             id = "emailaddress",
+                                             type = "email",
+                                             required = true,
+                                             @class = "form-control"
+                                        })
+                                        </div>
+                                        <div class="form-group">
+                                             @Html.LabelFor(m => m.Password, "Password", new { @class = "password" })
+                                             @Html.TextBoxFor(m => m.Password, new
+                                        {
+                                             placeholder = "Password",
+                                             title = "Enter your Password",
+                                             value = "",
+                                             name = "Password",
+                                             id = "password",
+                                             type = "password",
+                                             required = true,
+                                             onblur = "verificaParole()",
+                                             @class = "form-control"
+                                        })
+                                        </div>
+                                        <div class="form-group">
+
+                                             <label for="password">Repeat Password</label>
+                                             <input class="form-control" type="password" required id="repeat-password" placeholder="Repeat your Password" onblur="verificaParole()">
+                                             <div id="error-message-match" class="error-message" style="display:none; color: red;">The passwords do not match!</div>
+                                             <div id="error-message-length" class="error-message" style="display:none; color: red;">The password must be at least 8 characters long!</div>
+                                             <div id="error-message-policy" class="error-message" style="display:none; color: red;">The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character!</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                             <div class="custom-control custom-checkbox">
+                                                  <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                                  <label class="custom-control-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>
+                                             </div>
+                                        </div>
+                                        <div class="form-group mb-0 text-center">
+                                             <button class="btn btn-primary btn-block" type="submit" id="submit-button" href="/Home/Index"> Sign Up </button>
+                                        </div>
+
+                                   </form>
+                              }
+                         </div>
+                    </div>
+                    <div class="row mt-3">
+                         <div class="col-12 text-center">
+                              <p class="text-muted">Already have account?<a href="/Login/Login" class="text-primary font-weight-medium ml-1">Sign In</a></p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
