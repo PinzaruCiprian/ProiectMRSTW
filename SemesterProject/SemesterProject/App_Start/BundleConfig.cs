@@ -14,6 +14,7 @@ namespace SemesterProject.App_Start
                        "~/assets/css/bootstrap.css",
                        "~/assets/css/icons.css",
                        "~/assets/css/main.css",
+                       "~/assets/css/style.css",
                        "~/assets/css/app.css"));
 
                bundles.Add(new ScriptBundle("~/assets/js").Include(
