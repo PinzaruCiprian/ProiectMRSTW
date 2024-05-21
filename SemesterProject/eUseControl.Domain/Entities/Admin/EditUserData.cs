@@ -18,5 +18,5 @@ namespace eUseControl.Domain.Entities.Admin
           public string Phone { get; set; }
           public DateTime BirthDate { get; set; }
           public URole Level { get; set; }
-          
+     }
 }

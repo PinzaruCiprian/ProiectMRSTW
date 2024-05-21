@@ -51,3 +51,4 @@ namespace eUseControl.Domain.Entities.User
           [Display(Name = "Level")]
           public URole Level { get; set; }
      }
+}
