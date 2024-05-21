@@ -310,6 +310,9 @@
     <Content Include="Views\Admin\AddUser.cshtml" />
     <Content Include="Views\Admin\AddCompany.cshtml" />
     <Content Include="Views\Admin\AddFlight.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\EditCompany.cshtml" />
+    <Content Include="Views\Admin\EditFlight.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

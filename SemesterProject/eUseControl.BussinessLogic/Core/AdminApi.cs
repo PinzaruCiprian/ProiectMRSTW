@@ -13,7 +13,7 @@ using System.Xml.Linq;
 
 namespace eUseControl.BussinessLogic.Core
 {
-     class AdminApi
+     public class AdminApi
      {
           internal BoolResp AddUserAction(AddUserData data)
           {
@@ -132,7 +132,25 @@ namespace eUseControl.BussinessLogic.Core
                     db.SaveChanges();
                }
           }
+          internal BoolResp EditFlightAction(EditFlightData data)
+          {
+               using (var db = new TableContext())
+               {
+                    FlightTable existingFlight = db.Flight.FirstOrDefault(u => u.StartAdress == data.StartAdress && u.EndAdress == data.EndAdress && u.CompanyName == data.CompanyName);
 
+                    existingFlight.StartAdress = data.StartAdress;
+                    existingFlight.EndAdress = data.EndAdress;
+                    existingFlight.StartDate = data.StartDate;
+                    existingFlight.EndDate = data.EndDate;
+                    existingFlight.StartHour = data.StartHour;
+                    existingFlight.EndHour = data.EndHour;
+                    existingFlight.CompanyName = data.CompanyName;
+                    existingFlight.Type = data.Type;
+                    existingFlight.Price = data.Price;
+                    db.SaveChanges();
+               }
+               return new BoolResp { Status = true };
+          }
           internal void DeleteFlightAction(int id)
           {
                using (var db = new TableContext())
@@ -141,6 +159,51 @@ namespace eUseControl.BussinessLogic.Core
                     db.Flight.Remove(flight);
                     db.SaveChanges();
                }
+          }
+          internal BoolResp EditUserAction(EditUserData data)
+          {
+               UserTable existingUser;
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(data.Email))
+               {
+                    using (var db = new TableContext())
+                    {
+                         existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email);
+                         existingUser.FirstName = data.FirstName;
+                         existingUser.LastName = data.LastName;
+                         existingUser.Username = data.Username;
+                         existingUser.Email = data.Email;
+                         existingUser.Address = data.Address;
+                         existingUser.Phone = data.Phone;
+                         existingUser.BirthDate = data.BirthDate.Date;
+                         existingUser.Level = data.Level;
+                         db.SaveChanges();
+                    }
+                    return new BoolResp { Status = true };
+               }
+               else
+                    return new BoolResp { Status = false };
+          }
+
+          internal BoolResp EditCompanyAction(EditCompanyData data)
+          {
+               CompanyTable existingCompany;
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(data.Email))
+               {
+                    using (var db = new TableContext())
+                    {
+                         existingCompany = db.Company.FirstOrDefault(u => u.Email == data.Email);
+                         existingCompany.Name = data.Name;
+                         existingCompany.Description = data.Description;
+                         existingCompany.Email = data.Email;
+                         existingCompany.Phone = data.Phone;
+                         db.SaveChanges();
+                    }
+                    return new BoolResp { Status = true };
+               }
+               else
+                    return new BoolResp { Status = false };
           }
      }
 }

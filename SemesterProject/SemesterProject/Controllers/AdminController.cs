@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 
 namespace SemesterProject.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
           // GET: Admin
           private readonly IAdmin _admin;
@@ -201,6 +201,127 @@ namespace SemesterProject.Controllers
                return RedirectToAction("AddFlight", "Admin");
           }
 
+          public ActionResult EditUser(int id)
+          {
+               GetCurrentUserAndStatus();
+               using (var db = new TableContext())
+               {
+                    var user = db.Users.FirstOrDefault(u => u.Id == id);
+                    var data = Mapper.Map<EditUser>(user);
+
+                    ViewBag.userToEdit = data;
+                    return View(data);
+               }
+          }
+
+          public ActionResult EditCompany(int id)
+          {
+               GetCurrentUserAndStatus();
+               using (var db = new TableContext())
+               {
+                    var company = db.Company.FirstOrDefault(u => u.CompanyId == id);
+                    var data = Mapper.Map<EditCompany>(company);
+
+                    ViewBag.companyToEdit = data;
+                    return View(data);
+               }
+          }
+
+          public ActionResult EditFlight(int id)
+          {
+               GetCurrentUserAndStatus();
+               using (var db = new TableContext())
+               {
+                    var Flight = db.Flight.FirstOrDefault(u => u.Id == id);
+                    var data = Mapper.Map<EditFlight>(Flight);
+                    List<string> TypeList = new List<string> { "Summer", "Winter", "Cultural", "Wellness" };
+                    ViewBag.TypeList = TypeList;
+                    ViewBag.FlightToEdit = data;
+                    return View(data);
+               }
+          }
+
+
+
+
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult EditUser(EditUser user)
+          {
+               if (ModelState.IsValid)
+               {
+                    var data = Mapper.Map<EditUserData>(user);
+
+                    var editUser = _admin.EditUser(data);
+                    if (editUser.Status)
+                    {
+                         return RedirectToAction("AddUser", "Admin");
+                    }
+                    else
+                    {
+                         ModelState.AddModelError("", editUser.StatusMsg);
+                         return View();
+                    }
+               }
+               return View();
+          }
+
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult EditCompany(EditCompany company, HttpPostedFileBase imageFile)
+          {
+               if (ModelState.IsValid)
+               {
+                    if (imageFile != null && imageFile.ContentType == "image/png")
+                    {
+                         using (var db = new TableContext())
+                         {
+                              CompanyTable existingCompany = db.Company.FirstOrDefault(u => u.Email == company.Email);
+                              var path = Path.Combine(Server.MapPath($"~/assets/images/companies/{existingCompany.Name}.png"));
+                              existingCompany.Image = existingCompany.Name + ".png";
+                              db.SaveChanges();
+                              System.IO.File.Delete(path);
+                              imageFile.SaveAs(path);
+                         }
+                    }
+
+                    var data = Mapper.Map<EditCompanyData>(company);
+
+                    var editCompany = _admin.EditCompany(data);
+                    if (editCompany.Status)
+                    {
+                         return RedirectToAction("AddCompany", "Admin");
+                    }
+                    else
+                    {
+                         ModelState.AddModelError("", editCompany.StatusMsg);
+                         return View();
+                    }
+               }
+               return View();
+          }
+
+          [HttpPost]
+          [ValidateAntiForgeryToken]
+          public ActionResult EditFlight(EditFlight Flight)
+          {
+               if (ModelState.IsValid)
+               {
+                    var data = Mapper.Map<EditFlightData>(Flight);
+
+                    var editFlight = _admin.EditFlight(data);
+                    if (editFlight.Status)
+                    {
+                         return RedirectToAction("AddFlight", "Admin");
+                    }
+                    else
+                    {
+                         ModelState.AddModelError("", editFlight.StatusMsg);
+                         return View();
+                    }
+               }
+               return View();
+          }
 
 
      }

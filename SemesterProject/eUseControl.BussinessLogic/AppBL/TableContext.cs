@@ -1,4 +1,5 @@
-﻿using eUseControl.Domain.Entities.User;
+﻿using eUseControl.Domain.Entities.Airline;
+using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

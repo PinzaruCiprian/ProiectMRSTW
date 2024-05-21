@@ -1,4 +1,6 @@
-﻿using eUseControl.Domain.Entities.Admin;
+﻿using eUseControl.BussinessLogic.Core;
+using eUseControl.BussinessLogic.Interfaces;
+using eUseControl.Domain.Entities.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace eUseControl.BussinessLogic.AppBL
 {
-     public class AdminBL
+     public class AdminBL : AdminApi, IAdmin
      {
           public BoolResp AddUser(AddUserData data)
           {
