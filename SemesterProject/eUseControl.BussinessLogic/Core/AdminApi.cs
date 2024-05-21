@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace eUseControl.BussinessLogic.Core
 {
@@ -109,6 +110,37 @@ namespace eUseControl.BussinessLogic.Core
                     db.SaveChanges();
                }
                return new BoolResp { Status = true };
+
+
+          }
+          internal void DeleteUserAction(int id)
+          {
+               using (var db = new TableContext())
+               {
+                    UserTable user = db.Users.FirstOrDefault(u => u.Id == id);
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+               }
+          }
+
+          internal void DeleteCompanyAction(int id)
+          {
+               using (var db = new TableContext())
+               {
+                    CompanyTable company = db.Company.FirstOrDefault(u => u.CompanyId == id);
+                    db.Company.Remove(company);
+                    db.SaveChanges();
+               }
+          }
+
+          internal void DeleteFlightAction(int id)
+          {
+               using (var db = new TableContext())
+               {
+                    FlightTable flight = db.Flight.FirstOrDefault(u => u.Id == id);
+                    db.Flight.Remove(flight);
+                    db.SaveChanges();
+               }
           }
      }
 }

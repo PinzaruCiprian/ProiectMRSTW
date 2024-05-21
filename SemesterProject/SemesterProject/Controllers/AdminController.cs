@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Runtime.InteropServices;
 
 namespace SemesterProject.Controllers
 {
@@ -167,5 +168,40 @@ namespace SemesterProject.Controllers
                }
                return View();
           }
+          public ActionResult DeleteUser(int id)
+          {
+               using (var db = new TableContext())
+               {
+                    UserTable user = db.Users.FirstOrDefault(u => u.Id == id);
+                    if (user.Image != "default.png")
+                    {
+                         var path = Path.Combine(Server.MapPath($"~/assets/images/users/{user.Image}"));
+                         System.IO.File.Delete(path);
+                    }
+               }
+               _admin.DeleteUser(id);
+               return RedirectToAction("AddUser", "Admin");
+          }
+
+          public ActionResult DeleteCompany(int id)
+          {
+               using (var db = new TableContext())
+               {
+                    CompanyTable company = db.Company.FirstOrDefault(u => u.CompanyId == id);
+                    var path = Path.Combine(Server.MapPath($"~/assets/images/companies/{company.Image}"));
+                    System.IO.File.Delete(path);
+               }
+               _admin.DeleteCompany(id);
+               return RedirectToAction("AddCompany", "Admin");
+          }
+
+          public ActionResult DeleteFlight(int id)
+          {
+               _admin.DeleteFlight(id);
+               return RedirectToAction("AddFlight", "Admin");
+          }
+
+
+
      }
 }
