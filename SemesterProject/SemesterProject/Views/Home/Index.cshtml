@@ -1,4 +1,183 @@
 ﻿@{
-     Layout = "~/Views/Shared/_Layout.cshtml";
+     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
      ViewBag.Title = "Index";
+     var cheapFlightList = ViewBag.cheapFlightList;
+     var expensiveFlightList = ViewBag.expensiveFlightList;
+     var randomCompaniesList = ViewBag.randomCompaniesList;
 }
+
+<div class="hero_area">
+     <section>
+          <div>
+               <video autoplay loop muted style="width:100%;">
+                    <source src="~/assets/highway-loop.mp4" type="video/mp4">
+               </video>
+          </div>
+     </section>
+</div>
+
+<section class="service_section" style="background-color:white;">
+     <h2 style="margin:30px 0 0 50px">Explore travel opportunities with BlueSky Bookings!</h2>
+     <div class="container-fluid">
+          <div class="row">
+               <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                         <div class="img-box">
+                              <img src="~/assets/images/features/feature-1.png" alt="">
+                         </div>
+                         <div class="detail-box">
+                              <h5>Best Flights</h5>
+                              <p>Enjoy reliable and efficient air travel with premium services</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                         <div class="img-box">
+                              <img src="~/assets/images/features/feature-2.png" alt="">
+                         </div>
+                         <div class="detail-box">
+                              <h5>Hot offers</h5>
+                              <p>Discover special, exclusive travel deals at attractive discounts</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                         <div class="img-box">
+                              <img src="~/assets/images/features/feature-3.png" alt="">
+                         </div>
+                         <div class="detail-box">
+                              <h5>Best Quality</h5>
+                              <p>Experience high-standard, reliable service with exceptional guarantees</p>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                         <div class="img-box">
+                              <img src="~/assets/images/features/feature-4.png" alt="">
+                         </div>
+                         <div class="detail-box">
+                              <h5>24x7 Customer support</h5>
+                              <p>Receive constant, accessible, and dedicated support anytime</p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<section class="product_section">
+     <div class="container" style="padding:50px 0 0 0">
+          <h2 style="margin:0 0 10px 0">Cheap Flights</h2>
+          <div class="product_container">
+               @foreach (var Flight in cheapFlightList)
+               {
+                    TimeSpan duration = Flight.EndHour - Flight.StartHour;
+                    <div class="col-md-4">
+                         <div class="card-box">
+                              <div class="text-center">
+                                   <a href="@Url.Action("FlightData", "Home", new { name = Flight.CompanyName })"><img src="@Url.Content("~/assets/images/companies/" + @Flight.CompanyName + ".png")" alt="logo" class="avatar-xl rounded-circle mb-3"></a>
+                                   <h4 class="mb-1">@Flight.CompanyName</h4>
+                                   <h4 class="mb-1 text-danger">@Flight.Type Hollyday</h4>
+                                   <p class="text-muted  font-14">@Flight.StartAdress – @Flight.EndAdress</p>
+                              </div>
+
+                              <div class="font-16 text-left text-info font-weight-bolder">@Flight.StartHour.ToString("hh:mm tt") - @Flight.StartAdress</div>
+                              <p class="font-16 text-left text-muted">@Flight.StartDate.Date.ToString("MM/dd/yyyy") - @Flight.StartAirport</p>
+                              <p class="font-16 text-right text-success font-weight-bolder">@duration.Hours H : @duration.Minutes M</p>
+                              <div class="font-16 text-left text-info font-weight-bolder">@Flight.EndHour.ToString("hh:mm tt") - @Flight.EndAdress</div>
+                              <p class="font-16 text-left text-muted">@Flight.EndDate.ToString("MM/dd/yyyy") - @Flight.EndAirport</p>
+
+                              <div class="dropdown-divider"></div>
+                              <div class="row text-center">
+                                   <div class="col-6">
+                                        <h5 class="font-weight-normal text-muted">Price (USD)</h5>
+                                        <h3 class="m-b-30">@Flight.Price $</h3>
+                                   </div>
+                                   <div class="col-6">
+                                        <h5 class="font-weight-normal text-muted">Number of Passengers</h5>
+                                        <h3 class="m-b-30">1</h3>
+                                   </div>
+                              </div>
+                              <div class="text-center">
+                                   <a href="@Url.Action("FlightData", "Home", new { name = Flight.CompanyName })" class="btn btn-sm btn-secondary">Company Info</a>
+                                   <a href="javascript:void(0);" class="btn btn-sm btn-primary">Book Flight</a>
+                              </div>
+                         </div>
+                    </div>
+               }
+          </div>
+     </div>
+</section>
+
+<section class="product_section">
+     <div class="container" style="padding:50px 0 0 0">
+          <h2 style="margin:0 0 10px 0">Expensive Flights</h2>
+          <div class="product_container">
+               @foreach (var Flight in expensiveFlightList)
+               {
+                    TimeSpan duration = Flight.EndHour - Flight.StartHour;
+                    <div class="col-md-4">
+                         <div class="card-box">
+                              <div class="text-center">
+                                   <a href="@Url.Action("FlightData", "Home", new { name = Flight.CompanyName })"><img src="@Url.Content("~/assets/images/companies/" + @Flight.CompanyName + ".png")" alt="logo" class="avatar-xl rounded-circle mb-3"></a>
+                                   <h4 class="mb-1">@Flight.CompanyName</h4>
+                                   <h4 class="mb-1 text-danger">@Flight.Type Hollyday</h4>
+                                   <p class="text-muted  font-14">@Flight.StartAdress – @Flight.EndAdress</p>
+                              </div>
+
+                              <div class="font-16 text-left text-info font-weight-bolder">@Flight.EndHour.ToString("hh:mm tt") - @Flight.StartAdress</div>
+                              <p class="font-16 text-left text-muted">@Flight.StartDate.Date.ToString("MM/dd/yyyy") - @Flight.StartAirport</p>
+                              <p class="font-16 text-right text-success font-weight-bolder">@duration.Hours H : @duration.Minutes M</p>
+                              <div class="font-16 text-left text-info font-weight-bolder">@Flight.EndHour.ToString("hh:mm tt") - @Flight.EndAdress</div>
+                              <p class="font-16 text-left text-muted">@Flight.EndDate.ToString("MM/dd/yyyy") - @Flight.EndAirport</p>
+
+                              <div class="dropdown-divider"></div>
+                              <div class="row text-center">
+                                   <div class="col-6">
+                                        <h5 class="font-weight-normal text-muted">Price (USD)</h5>
+                                        <h3 class="m-b-30">@Flight.Price $</h3>
+                                   </div>
+                                   <div class="col-6">
+                                        <h5 class="font-weight-normal text-muted">Number of Passengers</h5>
+                                        <h3 class="m-b-30">1</h3>
+                                   </div>
+                              </div>
+                              <div class="text-center">
+                                   <a href="@Url.Action("FlightData", "Home", new { name = Flight.CompanyName })" class="btn btn-sm btn-secondary">Company Info</a>
+                                   <a href="javascript:void(0);" class="btn btn-sm btn-primary">Book Flight</a>
+                              </div>
+                         </div>
+                    </div>
+               }
+          </div>
+     </div>
+</section>
+
+<div class="row justify-content-center">
+     <div class="col-lg-10">
+          <div class="card-box">
+               <h4 class="font-24">Companies</h4>
+               <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+
+                         <div class="carousel-item active mt-3">
+                              <div class="row justify-content-center">
+                                   @foreach (var company in randomCompaniesList)
+                                   {
+                                        <div class="col-2 text-center">
+                                             <a href="@Url.Action("FlightData", "Home", new { name = company.Name })">
+                                                  <img class="avatar-xl rounded-circle" src="@Url.Content("~/assets/images/companies/" + company.Name + ".png")">
+                                             </a>
+                                             <h6 class="font-13">@company.Name</h6>
+                                        </div>
+                                   }
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

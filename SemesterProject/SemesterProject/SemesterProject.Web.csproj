@@ -306,6 +306,7 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Login\Recover.cshtml" />
     <Content Include="Views\Login\RecoverData.cshtml" />
+    <Content Include="Views\Home\FlightData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

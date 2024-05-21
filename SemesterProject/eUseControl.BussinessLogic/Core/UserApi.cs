@@ -1,55 +1,22 @@
 ﻿using AutoMapper;
 using eUseControl.BussinessLogic.AppBL;
 using eUseControl.Domain.Entities.Admin;
+using eUseControl.Domain.Entities.Airline;
 using eUseControl.Domain.Entities.User;
 using eUseControl.Domain.Enums;
 using eUseControl.Helpers;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 
 namespace eUseControl.BussinessLogic.Core
 {
      public class UserApi
      {
-          internal bool RecoverPasswordAction(string email, string password)
-          {
-               var validate = new EmailAddressAttribute();
-               if (validate.IsValid(email))
-               {
-                    using (var db = new TableContext())
-                    {
-                         UserTable user = db.Users.FirstOrDefault(u => u.Email == email);
-                         var pass = LoginHelper.HashGen(password);
-                         user.Password = pass;
-                         db.SaveChanges();
-                    }
-                    return true;
-               }
-               else
-                    return false;
-          }
-          internal void RemoveUnusedSessionsAction(UserMinimal user)
-          {
-               using (var db = new TableContext())
-               {
-                    var expiredSessions = db.Sessions.Where(s => s.ExpireTime < DateTime.Now).ToList();
-
-                    var sessionToDelete = db.Sessions.FirstOrDefault(s => s.Username == user.Email);
-                    db.Sessions.Remove(sessionToDelete);
-                    if (expiredSessions.Any())
-                    {
-                         foreach (var session in expiredSessions)
-                         {
-                              db.Sessions.Remove(session);
-                         }
-                    }
-                    db.SaveChanges();
-               }
-          }
-
           internal BoolResp UserLoginAction(ULoginData data)
           {
                var validate = new EmailAddressAttribute();
@@ -128,6 +95,86 @@ namespace eUseControl.BussinessLogic.Core
                else
                     return new BoolResp { Status = false };
           }
+
+          internal List<FlightTable> GetFlightListAction()
+          {
+               List<FlightTable> allFlights;
+               using (var db = new TableContext())
+               {
+                    allFlights = db.Flight.ToList();
+               }
+               return allFlights;
+          }
+
+          internal bool RecoverPasswordAction(string email, string password)
+          {
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(email))
+               {
+                    using (var db = new TableContext())
+                    {
+                         UserTable user = db.Users.FirstOrDefault(u => u.Email == email);
+                         var pass = LoginHelper.HashGen(password);
+                         user.Password = pass;
+                         db.SaveChanges();
+                    }
+                    return true;
+               }
+               else
+                    return false;
+          }
+
+          internal CompanyTable GetCompanyByIdAction(string name)
+          {
+               using (var db = new TableContext())
+               {
+                    CompanyTable company = db.Company.FirstOrDefault(f => f.Name == name);
+                    return company;
+               }
+          }
+
+          internal void RemoveUnusedSessionsAction(UserMinimal user)
+          {
+               using (var db = new TableContext())
+               {
+                    var expiredSessions = db.Sessions.Where(s => s.ExpireTime < DateTime.Now).ToList();
+
+                    var sessionToDelete = db.Sessions.FirstOrDefault(s => s.Username == user.Email);
+                    db.Sessions.Remove(sessionToDelete);
+                    if (expiredSessions.Any())
+                    {
+                         foreach (var session in expiredSessions)
+                         {
+                              db.Sessions.Remove(session);
+                         }
+                    }
+                    db.SaveChanges();
+               }
+          }
+
+          internal BoolResp EditUserAction(EditUserData data)
+          {
+               UserTable existingUser;
+               var validate = new EmailAddressAttribute();
+               if (validate.IsValid(data.Email))
+               {
+                    using (var db = new TableContext())
+                    {
+                         existingUser = db.Users.FirstOrDefault(u => u.Email == data.Email);
+                         existingUser.FirstName = data.FirstName;
+                         existingUser.LastName = data.LastName;
+                         existingUser.Email = data.Email;
+                         existingUser.Address = data.Address;
+                         existingUser.Phone = data.Phone;
+                         existingUser.BirthDate = data.BirthDate.Date;
+                         db.SaveChanges();
+                    }
+                    return new BoolResp { Status = true };
+               }
+               else
+                    return new BoolResp { Status = false };
+          }
+
           internal HttpCookie Cookie(string loginCredential)
           {
                int sessionTime = 60;
@@ -136,7 +183,7 @@ namespace eUseControl.BussinessLogic.Core
                     Value = CookieGenerator.Create(loginCredential)
                };
 
-               using (var db = new SessionContext())
+               using (var db = new TableContext())
                {
                     Session curent;
                     var validate = new EmailAddressAttribute();
@@ -153,7 +200,7 @@ namespace eUseControl.BussinessLogic.Core
                     {
                          curent.CookieString = apiCookie.Value;
                          curent.ExpireTime = DateTime.Now.AddMinutes(sessionTime);
-                         using (var todo = new SessionContext())
+                         using (var todo = new TableContext())
                          {
                               todo.Entry(curent).State = EntityState.Modified;
                               todo.SaveChanges();
@@ -178,13 +225,13 @@ namespace eUseControl.BussinessLogic.Core
                Session session;
                UserTable curentUser;
 
-               using (var db = new SessionContext())
+               using (var db = new TableContext())
                {
                     session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
                }
 
                if (session == null) return null;
-               using (var db = new UserContext())
+               using (var db = new TableContext())
                {
                     var validate = new EmailAddressAttribute();
                     if (validate.IsValid(session.Username))

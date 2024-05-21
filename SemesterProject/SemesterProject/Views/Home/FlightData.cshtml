@@ -1,0 +1,57 @@
+﻿@{
+     Layout = "~/Views/Shared/_Layout.cshtml";
+     ViewBag.Title = "FlightData";
+     var company = ViewBag.company;
+     var FlightsList = ViewBag.FlightsList;
+}
+<div class="row justify-content-center">
+     <div class="col-lg-4 col-xl-12">
+          <div class="card-box text-center">
+               <img src="@Url.Content("~/assets/images/companies/" + company.Name + ".png")" class="rounded-circle avatar-xxl img-thumbnail"
+                    alt="profile">
+               <h4 class="font-24">@company.Name</h4>
+
+               <div class="text-left mt-3">
+                    <p class="text-dark mb-3 font-17"><strong>Description:</strong> <span class="text-muted ml-2">@company.Description</span></p>
+                    <p class="text-dark mb-3 font-17"><strong>Email:</strong> <span class="text-muted ml-2">@company.Email</span></p>
+                    <p class="text-dark mb-3 font-17"><strong>Phone:</strong> <span class="text-muted ml-2">@company.Phone</span></p>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="row">
+     @foreach (var Flight in FlightsList)
+     {
+          TimeSpan duration = Flight.EndHour - Flight.StartHour;
+          <div class="col-md-4">
+               <div class="card-box">
+                    <div class="text-center">
+                         <h4 class="mb-1 text-danger">@Flight.Type Hollyday</h4>
+                         <p class="text-muted  font-14">@Flight.StartAdress – @Flight.EndAdress</p>
+                    </div>
+
+                    <div class="font-16 text-left text-info font-weight-bolder">@Flight.StartHour.ToString("hh:mm tt") - @Flight.StartAdress</div>
+                    <p class="font-16 text-left text-muted">@Flight.StartDate.Date.ToString("MM/dd/yyyy") - @Flight.StartAirport</p>
+                    <p class="font-16 text-right text-success font-weight-bolder">@duration.Hours H : @duration.Minutes M</p>
+                    <div class="font-16 text-left text-info font-weight-bolder">@Flight.EndHour.ToString("hh:mm tt") - @Flight.EndAdress</div>
+                    <p class="font-16 text-left text-muted">@Flight.EndDate.ToString("MM/dd/yyyy") - @Flight.EndAirport</p>
+
+                    <div class="dropdown-divider"></div>
+                    <div class="row text-center">
+                         <div class="col-6">
+                              <h5 class="font-weight-normal text-muted">Price (USD)</h5>
+                              <h3 class="m-b-30">@Flight.Price $</h3>
+                         </div>
+                         <div class="col-6">
+                              <h5 class="font-weight-normal text-muted">Number of Passengers</h5>
+                              <h3 class="m-b-30">1</h3>
+                         </div>
+                    </div>
+                    <div class="text-center">
+                         <a href="javascript:void(0);" class="btn btn-sm btn-primary">Book Flight</a>
+                    </div>
+               </div>
+          </div>
+     }
+</div>

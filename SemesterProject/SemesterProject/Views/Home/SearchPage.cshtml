@@ -1,63 +1,64 @@
-﻿
-@{
+﻿@{
      Layout = "~/Views/Shared/_Layout.cshtml";
      ViewBag.Title = "SearchPage";
-     var tickets = ViewBag.tickets;
+     var flightList = ViewBag.flightList;
 }
 
-<div class="row">
-     <div class="col-12">
-          <div class="card-box">
-               <div class="row">
-                    <div class="col-lg-8">
-                         <form class="form-inline">
-                              <div class="form-group">
-                                   <label for="inputPassword2" class="sr-only">Search</label>
-                                   <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
+@*<div class="row">
+          <div class="col-12">
+               <div class="card-box">
+                    <div class="row">
+                         <div class="col-lg-8">
+                              <form class="form-inline">
+                                   <div class="form-group">
+                                        <label for="inputPassword2" class="sr-only">Search</label>
+                                        <input type="text" class="form-control" id="inputPassword2" placeholder="Search...">
+                                   </div>
+                                   <div class="form-group mx-sm-3">
+                                        <label for="status-select" class="mr-2">Sort By</label>
+                                        <select class="custom-select" id="status-select">
+                                             <option selected="">All</option>
+                                             <option value="1">Date</option>
+                                             <option value="2">Name</option>
+                                             <option value="3">Price</option>
+                                        </select>
+                                   </div>
+                              </form>
+                         </div>
+                         <div class="col-lg-4">
+                              <div class="text-lg-right mt-3 mt-lg-0">
+                                   <button type="button" class="btn btn-success waves-effect waves-light"> Filter </button>
                               </div>
-                              <div class="form-group mx-sm-3">
-                                   <label for="status-select" class="mr-2">Sort By</label>
-                                   <select class="custom-select" id="status-select">
-                                        <option selected="">All</option>
-                                        <option value="1">Date</option>
-                                        <option value="2">Name</option>
-                                        <option value="3">Price</option>
-                                   </select>
-                              </div>
-                         </form>
-                    </div>
-                    <div class="col-lg-4">
-                         <div class="text-lg-right mt-3 mt-lg-0">
-                              <button type="button" class="btn btn-success waves-effect waves-light"> Filter </button>
                          </div>
                     </div>
                </div>
           </div>
-     </div>
-</div>
+     </div>*@
 
 <div class="row">
-     @for (int i = 0; i < tickets; i++)
+     @foreach (var Flight in flightList)
      {
+          TimeSpan duration = Flight.EndHour - Flight.StartHour;
           <div class="col-md-3">
                <div class="card-box">
                     <div class="text-center">
-                         <img src="~/assets/images/users/avatar-1.jpg" alt="logo" class="avatar-xl rounded-circle mb-3">
-                         <h4 class="mb-1">Wizz Air Hungary</h4>
-                         <p class="text-muted  font-14">Chişinău – Budapest</p>
+                         <a href="@Url.Action("FlightData", "Home", new { name = Flight.CompanyName })"><img src="@Url.Content("~/assets/images/companies/" + @Flight.CompanyName + ".png")" alt="logo" class="avatar-xl rounded-circle mb-3"></a>
+                         <h4 class="mb-1">@Flight.CompanyName</h4>
+                         <h4 class="mb-1 text-danger">@Flight.Type Hollyday</h4>
+                         <p class="text-muted  font-14">@Flight.StartAdress – @Flight.EndAdress</p>
                     </div>
 
-                    <div class="font-16 text-left text-info font-weight-bolder">15:25 - Chişinău</div>
-                    <p class="font-16 text-left text-muted">23 Apr - Chişinău International Airport (RMO)</p>
-                    <p class="font-16 text-right text-success font-weight-bolder">1 h 35 min</p>
-                    <div class="font-16 text-left text-info font-weight-bolder">16:00 - Budapest</div>
-                    <p class="font-16 text-left text-muted">23 Apr - Budapest Ferenc Liszt International Airport (BUD)</p>
+                    <div class="font-16 text-left text-info font-weight-bolder">@Flight.EndHour.ToString("hh:mm tt") - @Flight.StartAdress</div>
+                    <p class="font-16 text-left text-muted">@Flight.StartDate.Date.ToString("MM/dd/yyyy") - @Flight.StartAirport</p>
+                    <p class="font-16 text-right text-success font-weight-bolder">@duration.Hours H : @duration.Minutes M</p>
+                    <div class="font-16 text-left text-info font-weight-bolder">@Flight.EndHour.ToString("hh:mm tt") - @Flight.EndAdress</div>
+                    <p class="font-16 text-left text-muted">@Flight.EndDate.ToString("MM/dd/yyyy") - @Flight.EndAirport</p>
 
                     <div class="dropdown-divider"></div>
                     <div class="row text-center">
                          <div class="col-6">
                               <h5 class="font-weight-normal text-muted">Price (USD)</h5>
-                              <h3 class="m-b-30">87.00 $</h3>
+                              <h3 class="m-b-30">@Flight.Price $</h3>
                          </div>
                          <div class="col-6">
                               <h5 class="font-weight-normal text-muted">Number of Passengers</h5>
@@ -65,7 +66,7 @@
                          </div>
                     </div>
                     <div class="text-center">
-                         <a href="javascript:void(0);" class="btn btn-sm btn-secondary">More Info</a>
+                         <a href="@Url.Action("FlightData", "Home", new { name = Flight.CompanyName })" class="btn btn-sm btn-secondary">Company Info</a>
                          <a href="javascript:void(0);" class="btn btn-sm btn-primary">Book Flight</a>
                     </div>
                </div>
